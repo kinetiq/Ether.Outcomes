@@ -7,7 +7,7 @@ Ever write a method that could fail unexpectedly, like a call out to a web servi
 
 It would be great to just return the expected result, but instead you end up either using exceptions or writing wrappers, essentially plumbing, to handle cases where the resource is unavailable or does something erratic. 
 
-Outcome.NET's replaces that plumbing code with simple, expressive calls that just work.
+Outcome.NET replaces that plumbing code with simple, expressive calls that just work.
 
 How can I get started?
 ==============
