@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ether.Outcomes", "Outcomes\Ether.Outcomes.csproj", "{FCC30E62-1034-43B1-85C2-AF93EC1925B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ether.Outcomes.Tests", "Outcomes.Tests\Ether.Outcomes.Tests.csproj", "{08B07FB9-E8D7-4F4E-B5A1-9E6D98738998}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FCC30E62-1034-43B1-85C2-AF93EC1925B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCC30E62-1034-43B1-85C2-AF93EC1925B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCC30E62-1034-43B1-85C2-AF93EC1925B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCC30E62-1034-43B1-85C2-AF93EC1925B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08B07FB9-E8D7-4F4E-B5A1-9E6D98738998}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08B07FB9-E8D7-4F4E-B5A1-9E6D98738998}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08B07FB9-E8D7-4F4E-B5A1-9E6D98738998}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08B07FB9-E8D7-4F4E-B5A1-9E6D98738998}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
