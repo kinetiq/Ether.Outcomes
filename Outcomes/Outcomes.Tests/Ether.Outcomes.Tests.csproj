@@ -55,7 +55,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Outcomes\Outcomes\Ether.Outcomes.csproj">
+    <ProjectReference Include="..\Outcomes\Ether.Outcomes.csproj">
       <Project>{fcc30e62-1034-43b1-85c2-af93ec1925b7}</Project>
       <Name>Ether.Outcomes</Name>
     </ProjectReference>
