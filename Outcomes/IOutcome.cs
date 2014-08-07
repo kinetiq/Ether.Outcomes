@@ -12,5 +12,6 @@ namespace Ether.Outcomes
         bool Success { get; }
         List<string> Messages { get; }
         string ToString(string delimiter);
+        string ToString();
     }
 }
