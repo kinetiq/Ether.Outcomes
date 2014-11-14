@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Ether.Outcomes.Builder
 {
+    /// <summary>
+    /// Uses the builder pattern to create a fluent interface for success scenarios.
+    /// </summary>
     public class SuccessOutcomeBuilder<T> : OutcomeResult<T>
     {
         internal SuccessOutcomeBuilder(bool success) : base(success)
@@ -35,7 +38,7 @@ namespace Ether.Outcomes.Builder
         }
 
         /// <summary>
-        /// Sets the value for a success outcome. The outcome object is really just a wrapper for the value.
+        /// Sets the value for a success outcome. The outcome object is just a wrapper for the value.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns></returns>

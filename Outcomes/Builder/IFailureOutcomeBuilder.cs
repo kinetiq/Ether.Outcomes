@@ -14,7 +14,7 @@ namespace Ether.Outcomes.Builder
         IFailureOutcomeBuilder<T> FromException(Exception exception, string message = null);
 
         /// <summary>
-        /// Add an outcome's message to this outcome's message collection.
+        /// Add an outcome's message to the message list.
         /// Useful for unwinding deep calls where several methods have something to add about the failure. 
         /// </summary>
         /// <param name="outcome">A failure outcome.</param>
@@ -35,5 +35,17 @@ namespace Ether.Outcomes.Builder
         /// <param name="messages">The strings to add.</param>
         /// <returns></returns>
         IFailureOutcomeBuilder<T> WithMessage(IEnumerable<string> messages);
+
+        /// <summary>
+        /// Alternate syntax for FromOutcome. Adds messages from the specified outcome (if any).
+        /// </summary>
+        /// <param name="outcome">Source outcome that messages are pulled from.</param>
+        /// <param name="message">Optional message that will appear after the specified outcome's messages.</param>
+        IFailureOutcomeBuilder<T> WithMessagesFrom(IOutcome outcome, string message = null);
+
+        /// <summary>
+        /// Alternate syntax for WithMessage. Adds messages to the end of the message collection.
+        /// </summary>
+        IFailureOutcomeBuilder<T> WithMessagesFrom(IEnumerable<string> messages);
     }
 }

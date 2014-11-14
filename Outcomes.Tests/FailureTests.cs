@@ -50,6 +50,22 @@ namespace Ether.Outcomes.Tests
             Assert.IsTrue(Outcome.ToString("<br>") == "test1<br>test2<br>test3<br>");
         }
 
+
+        [TestMethod]
+        public void FailureChaining_MessageTest_Syntactic_Sugar()
+        {
+            var Messages = new List<string> { "test2", "test3" };
+
+            var Outcome = Outcomes.Failure<int>().WithMessage("test1")
+                                                 .WithMessagesFrom(Messages);
+
+            Assert.IsFalse(Outcome.Success);
+            Assert.IsTrue(Outcome.Value == 0);
+            Assert.IsTrue(Outcome.Messages.Count == 3);
+            Assert.IsTrue(Outcome.ToString() == "test1test2test3");
+            Assert.IsTrue(Outcome.ToString("<br>") == "test1<br>test2<br>test3<br>");
+        }
+
         [TestMethod]
         public void FailureChaining_FromExceptionTest()
         {
@@ -96,6 +112,20 @@ namespace Ether.Outcomes.Tests
 
             var Outcome = Outcomes.Failure().WithMessage("prefix")
                                             .FromOutcome(PreviousOutcome)
+                                            .WithMessage("suffix");
+
+            Assert.IsFalse(Outcome.Success);
+            Assert.IsTrue(Outcome.Messages.Count == 3);
+            Assert.IsTrue(Outcome.ToString("<br>") == "prefix<br>test<br>suffix<br>");
+        }
+
+        [TestMethod]
+        public void FailureChaining_Syntactic_Sugar_Test()
+        {
+            var PreviousOutcome = Outcomes.Failure("test");
+
+            var Outcome = Outcomes.Failure().WithMessage("prefix")
+                                            .WithMessagesFrom(PreviousOutcome)
                                             .WithMessage("suffix");
 
             Assert.IsFalse(Outcome.Success);
