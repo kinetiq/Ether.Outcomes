@@ -16,9 +16,12 @@ namespace Ether.Outcomes.Builder
         /// Add a string to the end of the outcome's message collection.
         /// </summary>
         /// <param name="message">String to add.</param>
+        /// <param name="paramList">Shorthand for String.Format</param>
         /// <returns></returns>
-        public SuccessOutcomeBuilder<T> WithMessage(string message)
+        public SuccessOutcomeBuilder<T> WithMessage(string message, params object[] paramList)
         {
+            message = string.Format(message, paramList);
+
             base.Messages.Add(message);
             return this;
         }
@@ -40,7 +43,7 @@ namespace Ether.Outcomes.Builder
         /// <summary>
         /// Sets the value for a success outcome. The outcome object is just a wrapper for the value.
         /// </summary>
-        /// <param name="value">The value.</param>
+        /// <param name="value">Specifies the value to wrap.</param>
         /// <returns></returns>
         public SuccessOutcomeBuilder<T> WithValue(T value)
         {

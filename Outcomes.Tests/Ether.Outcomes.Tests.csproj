@@ -51,6 +51,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="FailureTests.cs" />
+    <Compile Include="FailureFormatTests.cs" />
+    <Compile Include="SuccessFormatTests.cs" />
     <Compile Include="SuccessTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

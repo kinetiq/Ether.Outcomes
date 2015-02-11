@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Claims;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Ether.Outcomes;
 
 namespace Ether.Outcomes.Tests
 {
@@ -10,7 +8,7 @@ namespace Ether.Outcomes.Tests
     public class FailureTests
     {
         [TestMethod]
-        public void BasicFailureStateTest1()
+        public void Failure_Messages_Not_Null_By_Default()
         {
             IOutcome Outcome = Outcomes.Failure();
 
@@ -25,7 +23,7 @@ namespace Ether.Outcomes.Tests
         }
 
         [TestMethod]
-        public void BasicFailureStateTest2()
+        public void Failure_OfT_Messages_Not_Null_By_Default()
         {
             IOutcome<int> Outcome = Outcomes.Failure<int>();
 
@@ -36,7 +34,7 @@ namespace Ether.Outcomes.Tests
         }
 
         [TestMethod]
-        public void FailureChaining_MessageTest()
+        public void Failure_Basic_Chaining_Works()
         {
             var Messages = new List<string> { "test2", "test3" };
 
@@ -52,7 +50,7 @@ namespace Ether.Outcomes.Tests
 
 
         [TestMethod]
-        public void FailureChaining_MessageTest_Syntactic_Sugar()
+        public void Failure_Chaining_With_Syntactic_Sugar_Works()
         {
             var Messages = new List<string> { "test2", "test3" };
 
@@ -67,7 +65,7 @@ namespace Ether.Outcomes.Tests
         }
 
         [TestMethod]
-        public void FailureChaining_FromExceptionTest()
+        public void Failure_FromException_Works()
         {
             var Exception = new InvalidOperationException("test message");
 
@@ -80,7 +78,7 @@ namespace Ether.Outcomes.Tests
 
 
         [TestMethod]
-        public void FailureChaining_FromException_Chaining_Test()
+        public void Failure_FromException_Chaining_Works()
         {
             var Exception = new InvalidOperationException("test");
 
@@ -94,7 +92,7 @@ namespace Ether.Outcomes.Tests
 
 
         [TestMethod]
-        public void FailureChaining_FromOutcomeTest()
+        public void Failure_FromOutcome_Works()
         {
             var PreviousOutcome = Outcomes.Failure("test");
 
@@ -106,7 +104,7 @@ namespace Ether.Outcomes.Tests
         }
 
         [TestMethod]
-        public void FailureChaining_FromOutcome_Chaining_Test()
+        public void Failure_FromOutcome_Chaining_Works()
         {
             var PreviousOutcome = Outcomes.Failure("test");
 
@@ -120,7 +118,7 @@ namespace Ether.Outcomes.Tests
         }
 
         [TestMethod]
-        public void FailureChaining_Syntactic_Sugar_Test()
+        public void Failure_Chaining_Syntactic_Sugar_Works()
         {
             var PreviousOutcome = Outcomes.Failure("test");
 

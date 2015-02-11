@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Claims;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Ether.Outcomes;
 
 namespace Ether.Outcomes.Tests
 {
@@ -10,7 +8,7 @@ namespace Ether.Outcomes.Tests
     public class SuccessTests
     {
         [TestMethod]
-        public void BasicSuccessStateTest1()
+        public void Success_Messages_Not_Null_By_Default()
         {
             IOutcome Outcome = Outcomes.Success();
 
@@ -24,7 +22,7 @@ namespace Ether.Outcomes.Tests
         }
 
         [TestMethod]
-        public void BasicSuccessStateTest2()
+        public void Success_Messages_OfT_Not_Null_By_Default()
         {
             IOutcome<int> Outcome = Outcomes.Success<int>();
 
@@ -35,7 +33,7 @@ namespace Ether.Outcomes.Tests
         }
 
         [TestMethod]
-        public void SuccessChainingTest()
+        public void Success_Basic_Chaining_Works()
         {
             var Messages = new List<string> {"test2", "test3"};
 
@@ -51,7 +49,7 @@ namespace Ether.Outcomes.Tests
         }
 
         [TestMethod]
-        public void SuccessHelpers1()
+        public void Success_WithValue_Works()
         {
             var Outcome = Outcomes.Success<Decimal>(23123.32M);
 
@@ -63,7 +61,7 @@ namespace Ether.Outcomes.Tests
         }
 
         [TestMethod]
-        public void SuccessHelpers2()
+        public void Success_WithValue_And_Message_Works()
         {
             var Outcome = Outcomes.Success<string>("9An@nsd!d", "Encrypted value retrieved in 5s!");
 
@@ -74,7 +72,7 @@ namespace Ether.Outcomes.Tests
         }
 
         [TestMethod]
-        public void SuccessHelpers3()
+        public void Success_WithValue_Works_Even_If_Generic_Not_Specified()
         {
             var Outcome = Outcomes.Success(23123.32M);
 
@@ -83,17 +81,6 @@ namespace Ether.Outcomes.Tests
             Assert.IsTrue(Outcome.Value == 23123.32M);
             Assert.IsTrue(Outcome.ToString() == string.Empty);
             Assert.IsTrue(Outcome.ToString("<br>") == string.Empty);
-        }
-
-        [TestMethod]
-        public void SuccessHelpers4()
-        {
-            var Outcome = Outcomes.Success("9An@nsd!d", "Encrypted value retrieved in 5s!");
-
-            Assert.IsTrue(Outcome.Success);
-            Assert.IsTrue(Outcome.Value == "9An@nsd!d");
-            Assert.IsTrue(Outcome.Messages.Count == 1);
-            Assert.IsTrue(Outcome.ToString() == "Encrypted value retrieved in 5s!");
         }
     }
 }

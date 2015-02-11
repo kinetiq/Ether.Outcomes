@@ -42,19 +42,19 @@ namespace Ether.Outcomes
         /// <summary>
         /// Returns an IOutcome with Success = true, sets the value, and adds a message.
         /// </summary>
-        public static SuccessOutcomeBuilder<object> Success(object value, string message)
+        public static SuccessOutcomeBuilder<object> Success(object value, string message, params object[] paramList)
         {
             return new SuccessOutcomeBuilder<object>(success: true).WithValue(value)
-                                                                   .WithMessage(message);
+                                                                   .WithMessage(message, paramList);
         }
 
         /// <summary>
         /// Returns an IOutcome with Success = true, sets the value, and adds a message.
         /// </summary>
-        public static SuccessOutcomeBuilder<T> Success<T>(T value, string message)
+        public static SuccessOutcomeBuilder<T> Success<T>(T value, string message, params object[] paramList)
         {
             return new SuccessOutcomeBuilder<T>(success: true).WithValue(value)
-                                                              .WithMessage(message);
+                                                              .WithMessage(message, paramList);
         }       
     }
 
@@ -74,47 +74,47 @@ namespace Ether.Outcomes
         /// <summary>
         /// Returns an IOutcome with Success = false and sets the message.
         /// </summary>
-        public static IFailureOutcomeBuilder<object> Failure(string message)
+        public static IFailureOutcomeBuilder<object> Failure(string message, params object[] paramList)
         {
-            return new FailureOutcomeBuilder<object>(success: false).WithMessage(message);
+            return new FailureOutcomeBuilder<object>(success: false).WithMessage(message, paramList);
         }
 
         /// <summary>
         /// Returns an IOutcome with Success = false and sets the message.
         /// </summary>
-        public static IFailureOutcomeBuilder<T> Failure<T>(string message)
+        public static IFailureOutcomeBuilder<T> Failure<T>(string message, params object[] paramList)
         {
-            return new FailureOutcomeBuilder<T>(success: false).WithMessage(message);
+            return new FailureOutcomeBuilder<T>(success: false).WithMessage(message, paramList);
         }
 
         /// <summary>
         /// Returns an IOutcome with Success = false and sets the message from an exception.
         /// </summary>
-        public static IFailureOutcomeBuilder<object> Failure(Exception exception, string message = null)
+        public static IFailureOutcomeBuilder<object> Failure(Exception exception, string message = null, params object[] paramList)
         {
-            return new FailureOutcomeBuilder<object>(success: false).FromException(exception, message);
+            return new FailureOutcomeBuilder<object>(success: false).FromException(exception, message, paramList);
         }
 
         /// <summary>
         /// Returns an IOutcome with Success = false and sets the message from an exception.
         /// </summary>
-        public static IFailureOutcomeBuilder<T> Failure<T>(Exception exception, string message = null)
+        public static IFailureOutcomeBuilder<T> Failure<T>(Exception exception, string message = null, params object[] paramList)
         {
-            return new FailureOutcomeBuilder<T>(success: false).FromException(exception, message);
+            return new FailureOutcomeBuilder<T>(success: false).FromException(exception, message, paramList);
         }
 
         /// <summary>
         /// Returns an IOutcome with Success = false and sets the message from another outcome.
         /// </summary>
-        public static IFailureOutcomeBuilder<object> Failure(IOutcome outcome, string message = null)
+        public static IFailureOutcomeBuilder<object> Failure(IOutcome outcome, string message = null, params object[] paramList)
         {
-            return new FailureOutcomeBuilder<object>(success: false).FromOutcome(outcome, message);
+            return new FailureOutcomeBuilder<object>(success: false).FromOutcome(outcome, message, paramList);
         }
 
         /// <summary>
         /// Returns an IOutcome with Success = false and sets the message from another outcome.
         /// </summary>
-        public static IFailureOutcomeBuilder<T> Failure<T>(IOutcome outcome, string message = null)
+        public static IFailureOutcomeBuilder<T> Failure<T>(IOutcome outcome, string message = null, params object[] paramList)
         {
             return new FailureOutcomeBuilder<T>(success: false).FromOutcome(outcome, message);
         }
