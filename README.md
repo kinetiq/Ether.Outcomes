@@ -1,11 +1,11 @@
 What is Outcome.NET?
 ==============
 
-Outcome.NET is a fluent wrapper for .NET that eliminates plumbing code around failure-prone functions.
+Outcome.NET lets your methods return either a generic result, or in the event of failure, a list of messages. It's a fluent, expressive, easy-to-learn spin on the <a href="http://martinfowler.com/dslCatalog/notification.html">Notification pattern</a>, with a few careful tweaks.  
 
 Ever write a method that could fail intermittently, like a call to a particularly flaky web service?
 
-Typically, you handle this one of three ways: by throwing/catching exceptions, by tacking boilerplate code onto your result with metadata to indicate success or failure, or by wrapping the result in another object. 
+Typically, you handle this one of three ways: <a href="http://martinfowler.com/articles/replaceThrowWithNotification.html">by throwing/catching exceptions</a>, by tacking boilerplate code onto your result with metadata to indicate success or failure, or by wrapping the result in another object. 
 
 All of these work, but they're plumbing, and that's wasteful. Outcome.NET takes the third approach and extends it, providing an expressive, fluent wrapper that just works. 
 
