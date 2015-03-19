@@ -10,34 +10,34 @@ namespace Ether.Outcomes.Tests
         [TestMethod]
         public void Failure_WithMessage_Should_Support_Formatting()
         {
-            IOutcome Outcome = Outcomes.Failure().WithMessage("Bob {0} a {1}", "combines", "string");
+            IOutcome outcome = Outcomes.Failure().WithMessage("Bob {0} a {1}", "combines", "string");
 
-            Assert.IsTrue(!Outcome.Success);
-            Assert.IsTrue(Outcome.ToString() == "Bob combines a string");
+            Assert.IsTrue(!outcome.Success);
+            Assert.IsTrue(outcome.ToString() == "Bob combines a string");
         }
         
         [TestMethod]
         public void Failure_FromException_Should_Support_Formatting()
         {
-            var Exception = new InvalidOperationException("test message");
+            var exception = new InvalidOperationException("test message");
 
-            var Outcome = Outcomes.Failure().FromException(Exception, "prefix message {0}", "format");
+            var outcome = Outcomes.Failure().FromException(exception, "prefix message {0}", "format");
 
-            Assert.IsFalse(Outcome.Success);
-            Assert.IsTrue(Outcome.Messages.Count == 2);
-            Assert.IsTrue(Outcome.ToString("<br>") == "prefix message format<br>Exception: test message<br>");
+            Assert.IsFalse(outcome.Success);
+            Assert.IsTrue(outcome.Messages.Count == 2);
+            Assert.IsTrue(outcome.ToString("<br>") == "prefix message format<br>Exception: test message<br>");
         }
     
         [TestMethod]
         public void Failure_FromOutcome_Should_Support_Formatting()
         {
-            var PreviousOutcome = Outcomes.Failure("test");
+            var previousOutcome = Outcomes.Failure("test");
 
-            var Outcome = Outcomes.Failure().FromOutcome(PreviousOutcome, "prefix {0}", "format");
+            var outcome = Outcomes.Failure().FromOutcome(previousOutcome, "prefix {0}", "format");
 
-            Assert.IsFalse(Outcome.Success);
-            Assert.IsTrue(Outcome.Messages.Count == 2);
-            Assert.IsTrue(Outcome.ToString("<br>") == "prefix format<br>test<br>");
+            Assert.IsFalse(outcome.Success);
+            Assert.IsTrue(outcome.Messages.Count == 2);
+            Assert.IsTrue(outcome.ToString("<br>") == "prefix format<br>test<br>");
         }
     }
 }

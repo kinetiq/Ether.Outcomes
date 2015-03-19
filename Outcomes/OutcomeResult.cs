@@ -37,14 +37,14 @@ namespace Ether.Outcomes
         /// <returns>The message list, concatenated.</returns>
         public string ToString(string delimiter)
         {
-            var Result = new StringBuilder();
+            var result = new StringBuilder();
 
-            foreach (var Message in Messages)
+            foreach (var message in Messages)
             {
-                Result.AppendFormat("{0}{1}", Message, delimiter);
+                result.AppendFormat("{0}{1}", message, delimiter);
             }
 
-            return Result.ToString();
+            return result.ToString();
         }
     }
 }
