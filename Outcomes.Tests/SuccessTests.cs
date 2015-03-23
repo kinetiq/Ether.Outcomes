@@ -16,9 +16,7 @@ namespace Ether.Outcomes.Tests
             Assert.IsNotNull(outcome.Messages);
             Assert.IsTrue(outcome.ToString() == string.Empty);
 
-            //This should also work.
-            IOutcome<object> o = (IOutcome<object>) outcome;
-            Assert.IsNull(o.Value);
+
         }
 
         [TestMethod]
@@ -36,7 +34,6 @@ namespace Ether.Outcomes.Tests
         public void Success_Basic_Chaining_Works()
         {
             var messages = new List<string> {"test2", "test3"};
-
             var outcome = Outcomes.Success<int>().WithValue(32)
                                                  .WithMessage("test1")
                                                  .WithMessage(messages);

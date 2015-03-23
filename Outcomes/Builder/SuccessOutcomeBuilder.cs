@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 namespace Ether.Outcomes.Builder
 {
@@ -18,6 +19,7 @@ namespace Ether.Outcomes.Builder
         /// <param name="message">String to add.</param>
         /// <param name="paramList">Shorthand for String.Format</param>
         /// <returns></returns>
+        [StringFormatMethod("message")]
         public SuccessOutcomeBuilder<T> WithMessage(string message, params object[] paramList)
         {
             message = string.Format(message, paramList);
