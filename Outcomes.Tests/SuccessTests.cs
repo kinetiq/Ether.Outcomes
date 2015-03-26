@@ -42,7 +42,7 @@ namespace Ether.Outcomes.Tests
             Assert.IsTrue(outcome.Value == 32);
             Assert.IsTrue(outcome.Messages.Count == 3);
             Assert.IsTrue(outcome.ToString() == "test1test2test3");
-            Assert.IsTrue(outcome.ToString("<br>") == "test1<br>test2<br>test3<br>");
+            Assert.IsTrue(outcome.FormatMultiLine("<br>") == "test1<br>test2<br>test3<br>");
         }
 
         [TestMethod]
@@ -54,7 +54,7 @@ namespace Ether.Outcomes.Tests
             Assert.IsTrue(outcome.Messages.Count == 0);
             Assert.IsTrue(outcome.Value == 23123.32M);
             Assert.IsTrue(outcome.ToString() == string.Empty);
-            Assert.IsTrue(outcome.ToString("<br>") == string.Empty);
+            Assert.IsTrue(outcome.FormatMultiLine("<br>") == string.Empty);
         }
 
         [TestMethod]
@@ -65,7 +65,7 @@ namespace Ether.Outcomes.Tests
             Assert.IsTrue(outcome.Success);
             Assert.IsTrue(outcome.Value == "9An@nsd!d");
             Assert.IsTrue(outcome.Messages.Count == 1);
-            Assert.IsTrue(outcome.ToString() == "Encrypted value retrieved in 5s!");
+            Assert.IsTrue(outcome.FormatMultiLine() == "Encrypted value retrieved in 5s!");
         }
 
         [TestMethod]
@@ -77,7 +77,7 @@ namespace Ether.Outcomes.Tests
             Assert.IsTrue(outcome.Messages.Count == 0);
             Assert.IsTrue(outcome.Value == 23123.32M);
             Assert.IsTrue(outcome.ToString() == string.Empty);
-            Assert.IsTrue(outcome.ToString("<br>") == string.Empty);
+            Assert.IsTrue(outcome.FormatMultiLine("<br>") == string.Empty);
         }
     }
 }
