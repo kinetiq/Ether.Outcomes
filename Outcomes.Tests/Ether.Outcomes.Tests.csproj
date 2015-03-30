@@ -59,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Outcomes\Ether.Outcomes.csproj">
-      <Project>{fcc30e62-1034-43b1-85c2-af93ec1925b7}</Project>
+      <Project>{5e8758eb-ed8b-4f86-9176-4b10c50da8be}</Project>
       <Name>Ether.Outcomes</Name>
     </ProjectReference>
   </ItemGroup>

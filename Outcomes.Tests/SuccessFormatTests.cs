@@ -8,7 +8,8 @@ namespace Ether.Outcomes.Tests
         [TestMethod]
         public void Success_WithMessage_Supports_Format()
         {
-            IOutcome outcome = Outcomes.Success().WithMessage("Bob {0} at {1}", "wins", "life");
+            IOutcome outcome = Outcomes.Success()
+                                       .WithMessage("Bob {0} at {1}", "wins", "life");
 
             Assert.IsTrue(outcome.Success);
             Assert.IsTrue(outcome.ToString() == "Bob wins at life");

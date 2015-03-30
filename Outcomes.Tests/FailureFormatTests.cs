@@ -25,19 +25,21 @@ namespace Ether.Outcomes.Tests
 
             Assert.IsFalse(outcome.Success);
             Assert.IsTrue(outcome.Messages.Count == 2);
-            Assert.IsTrue(outcome.ToString("<br>") == "prefix message format<br>Exception: test message<br>");
+            Assert.IsTrue(outcome.FormatMultiLine("<br>") == "prefix message format<br>Exception: test message<br>");
         }
     
         [TestMethod]
         public void Failure_FromOutcome_Should_Support_Formatting()
         {
-            var previousOutcome = Outcomes.Failure("test");
+            var previousOutcome = Outcomes.Failure()
+                                          .WithMessage("test");
 
-            var outcome = Outcomes.Failure().FromOutcome(previousOutcome, "prefix {0}", "format");
+            var outcome = Outcomes.Failure()
+                                  .FromOutcome(previousOutcome, "prefix {0}", "format");
 
             Assert.IsFalse(outcome.Success);
             Assert.IsTrue(outcome.Messages.Count == 2);
-            Assert.IsTrue(outcome.ToString("<br>") == "prefix format<br>test<br>");
+            Assert.IsTrue(outcome.FormatMultiLine("<br>") == "prefix format<br>test<br>");
         }
     }
 }

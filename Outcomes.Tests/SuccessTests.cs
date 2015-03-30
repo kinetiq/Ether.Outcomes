@@ -60,7 +60,9 @@ namespace Ether.Outcomes.Tests
         [TestMethod]
         public void Success_WithValue_And_Message_Works()
         {
-            var outcome = Outcomes.Success<string>("9An@nsd!d", "Encrypted value retrieved in 5s!");
+            var outcome = Outcomes.Success<string>()
+                                  .WithValue("9An@nsd!d")
+                                  .WithMessage("Encrypted value retrieved in 5s!");
 
             Assert.IsTrue(outcome.Success);
             Assert.IsTrue(outcome.Value == "9An@nsd!d");

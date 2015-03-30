@@ -34,17 +34,6 @@ namespace Ether.Outcomes
         /// Dumps the message list into a string, with a delimiter after each line. 
         /// </summary>
         /// <param name="delimiter">A delimiter that goes after each string in the message list. Useful for implementing platform-appropriate line breaks.</param>
-        /// <returns>The message list, concatenated.</returns>
-        [Obsolete("This will be removed in v2, as this is an unconventional use for ToString. Use FormatMultiLine instead.")]
-        public string ToString(string delimiter)
-        {
-            return FormatMultiLine(delimiter);
-        }
-
-        /// <summary>
-        /// Dumps the message list into a string, with a delimiter after each line. 
-        /// </summary>
-        /// <param name="delimiter">A delimiter that goes after each string in the message list. Useful for implementing platform-appropriate line breaks.</param>
         /// <returns>The message list, concatenated.</returns>       
         public string FormatMultiLine(string delimiter = null)
         {
