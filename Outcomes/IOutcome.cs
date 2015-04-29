@@ -2,9 +2,14 @@ using System.Collections.Generic;
 
 namespace Ether.Outcomes
 {
-    public interface IOutcome<T> : IOutcome
+    public interface IOutcome<TValue> : IOutcome
     {
-        T Value { get; }
+        TValue Value { get; }
+    }
+
+    public interface IOutcome<TValue, TStatusCode> : IOutcome<TValue>
+    {
+        TStatusCode StatusCode { get; }
     }
 
     public interface IOutcome

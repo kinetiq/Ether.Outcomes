@@ -6,7 +6,7 @@ namespace Ether.Outcomes.Builder
     /// <summary>
     /// Uses the builder pattern to create a fluent interface for failure scenarios.
     /// </summary>
-    public class FailureOutcomeBuilder<T> : SuccessOutcomeBuilder<T>, IFailureOutcomeBuilder<T>
+    public class FailureOutcomeBuilder<TValue, TStatusCode> : SuccessOutcomeBuilder<TValue, TStatusCode>, IFailureOutcomeBuilder<TValue, TStatusCode>
     {
         internal FailureOutcomeBuilder(bool success) : base(success)
         {
@@ -18,7 +18,7 @@ namespace Ether.Outcomes.Builder
         /// <param name="exception">Exception used to generate the message.</param>
         /// <param name="message">Optional message that will appear after the exception's messages.</param>
         /// <param name="paramList">Shorthand for String.Format</param>
-        public IFailureOutcomeBuilder<T> FromException(Exception exception, string message = null, params object[] paramList)
+        public IFailureOutcomeBuilder<TValue, TStatusCode> FromException(Exception exception, string message = null, params object[] paramList)
         {
             if (message != null)
             {
@@ -36,7 +36,7 @@ namespace Ether.Outcomes.Builder
         /// <param name="outcome">Source outcome that messages are pulled from. If there are no messages, execution continues.</param>
         /// <param name="message">Optional message that will appear after the specified outcome's messages.</param>
         /// <param name="paramList">Shorthand for String.Format</param>
-        public IFailureOutcomeBuilder<T> FromOutcome(IOutcome outcome, string message = null, params object[] paramList)
+        public IFailureOutcomeBuilder<TValue, TStatusCode> FromOutcome(IOutcome outcome, string message = null, params object[] paramList)
         {
             if (message != null)
             {
@@ -53,7 +53,7 @@ namespace Ether.Outcomes.Builder
         /// </summary>
         /// <param name="message">Optional message that will appear after the specified outcome's messages.</param>
         /// <param name="paramList">Shorthand for String.Format</param>
-        public new IFailureOutcomeBuilder<T> WithMessage(string message, params object[] paramList)
+        public new IFailureOutcomeBuilder<TValue, TStatusCode> WithMessage(string message, params object[] paramList)
         {
             base.WithMessage(message, paramList);
             return this; 
@@ -62,7 +62,7 @@ namespace Ether.Outcomes.Builder
         /// <summary>
         /// Adds a collection of messages to the end of the outcome's message list.
         /// </summary>
-        public new IFailureOutcomeBuilder<T> WithMessage(IEnumerable<string> messages)
+        public new IFailureOutcomeBuilder<TValue, TStatusCode> WithMessage(IEnumerable<string> messages)
         {
             base.WithMessage(messages);
             return this;
@@ -74,7 +74,7 @@ namespace Ether.Outcomes.Builder
         /// <param name="outcome">Source outcome that messages are pulled from.</param>
         /// <param name="message">Optional message that will appear after the specified outcome's messages.</param>
         /// <param name="paramList">Shorthand for String.Format</param>
-        public IFailureOutcomeBuilder<T> WithMessagesFrom(IOutcome outcome, string message = null, params object[] paramList)
+        public IFailureOutcomeBuilder<TValue, TStatusCode> WithMessagesFrom(IOutcome outcome, string message = null, params object[] paramList)
         {
             FromOutcome(outcome, message, paramList);
             return this;
@@ -83,9 +83,15 @@ namespace Ether.Outcomes.Builder
         /// <summary>
         /// Alternate syntax for WithMessage. Adds a collection of messages to the end of the outcome's message list. 
         /// </summary>
-        public IFailureOutcomeBuilder<T> WithMessagesFrom(IEnumerable<string> messages)
+        public IFailureOutcomeBuilder<TValue, TStatusCode> WithMessagesFrom(IEnumerable<string> messages)
         {
             base.WithMessage(messages);
+            return this;
+        }
+
+        public new IFailureOutcomeBuilder<TValue, TStatusCode> WithStatusCode(TStatusCode statusCode)
+        {
+            base.WithStatusCode(statusCode);
             return this;
         }
     }

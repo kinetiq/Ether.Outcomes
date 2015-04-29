@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Ether.Outcomes.Tests.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Ether.Outcomes.Tests
@@ -122,13 +123,42 @@ namespace Ether.Outcomes.Tests
         {
             var previousOutcome = Outcomes.Failure().WithMessage("test");
 
-            var outcome = Outcomes.Failure().WithMessage("prefix")
+            var outcome = Outcomes.Failure().WithStatusCode(201)
+                                            .WithMessage("prefix")
                                             .WithMessagesFrom(previousOutcome)
                                             .WithMessage("suffix");
+            
 
             Assert.IsFalse(outcome.Success);
             Assert.IsTrue(outcome.Messages.Count == 3);
             Assert.IsTrue(outcome.FormatMultiLine("<br>") == "prefix<br>test<br>suffix<br>");
         }
+
+
+        [TestMethod]
+        public void Failure_StatusCode_Is_NullByDefault()
+        {
+            var outcome = Outcomes.Failure();
+
+            Assert.IsNull(outcome.StatusCode);
+        }
+
+        [TestMethod]
+        public void Failure_StatusCode_WithStatusCode_Works()
+        {
+            var outcome = Outcomes.Failure()
+                                  .WithStatusCode(200);
+
+            Assert.IsTrue(outcome.StatusCode == 200);
+        }
+
+        [TestMethod]
+        public void Failure_StatusCode_WithStatusCode_Works_Generic()
+        {
+            var outcome = Outcomes.Failure<decimal, StatusCodes>()
+                                  .WithStatusCode(StatusCodes.New);
+
+            Assert.IsTrue(outcome.StatusCode == StatusCodes.New);
+        }   
     }
 }

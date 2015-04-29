@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Ether.Outcomes.Tests.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Ether.Outcomes.Tests
@@ -15,8 +16,11 @@ namespace Ether.Outcomes.Tests
             Assert.IsTrue(outcome.Success);
             Assert.IsNotNull(outcome.Messages);
             Assert.IsTrue(outcome.ToString() == string.Empty);
+        }
 
-
+        public IOutcome<int> Method()
+        {
+            return Outcomes.Success<int>();
         }
 
         [TestMethod]
@@ -35,11 +39,13 @@ namespace Ether.Outcomes.Tests
         {
             var messages = new List<string> {"test2", "test3"};
             var outcome = Outcomes.Success<int>().WithValue(32)
+                                                 .WithStatusCode(401)
                                                  .WithMessage("test1")
                                                  .WithMessage(messages);
 
             Assert.IsTrue(outcome.Success);
             Assert.IsTrue(outcome.Value == 32);
+            Assert.IsTrue(outcome.StatusCode == 401);
             Assert.IsTrue(outcome.Messages.Count == 3);
             Assert.IsTrue(outcome.ToString() == "test1test2test3");
             Assert.IsTrue(outcome.FormatMultiLine("<br>") == "test1<br>test2<br>test3<br>");
@@ -81,5 +87,30 @@ namespace Ether.Outcomes.Tests
             Assert.IsTrue(outcome.ToString() == string.Empty);
             Assert.IsTrue(outcome.FormatMultiLine("<br>") == string.Empty);
         }
+
+        [TestMethod]
+        public void Success_StatusCode_Is_NullByDefault()
+        {
+            var outcome = Outcomes.Success(23123.32M);
+
+            Assert.IsNull(outcome.StatusCode);
+        }
+
+        [TestMethod]
+        public void Success_StatusCode_WithStatusCode_Works()
+        {
+            var outcome = Outcomes.Success(23123.32M).WithStatusCode(200);
+
+            Assert.IsTrue(outcome.StatusCode == 200);
+        }
+
+        [TestMethod]
+        public void Success_StatusCode_WithStatusCode_Works_Generic()
+        {
+            var outcome = Outcomes.Success<decimal, StatusCodes>(23123.32M)
+                                  .WithStatusCode(StatusCodes.New);
+
+            Assert.IsTrue(outcome.StatusCode == StatusCodes.New);
+        }    
     }
 }

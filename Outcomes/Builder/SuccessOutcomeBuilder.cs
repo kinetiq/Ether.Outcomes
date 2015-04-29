@@ -7,7 +7,7 @@ namespace Ether.Outcomes.Builder
     /// <summary>
     /// Uses the builder pattern to create a fluent interface for success scenarios.
     /// </summary>
-    public class SuccessOutcomeBuilder<T> : OutcomeResult<T>
+    public class SuccessOutcomeBuilder<TValue, TStatusCode> : OutcomeResult<TValue, TStatusCode>
     {
         internal SuccessOutcomeBuilder(bool success) : base(success)
         {
@@ -20,7 +20,7 @@ namespace Ether.Outcomes.Builder
         /// <param name="paramList">Shorthand for String.Format</param>
         /// <returns></returns>
         [StringFormatMethod("message")]
-        public SuccessOutcomeBuilder<T> WithMessage(string message, params object[] paramList)
+        public SuccessOutcomeBuilder<TValue, TStatusCode> WithMessage(string message, params object[] paramList)
         {
             message = string.Format(message, paramList);
 
@@ -33,7 +33,7 @@ namespace Ether.Outcomes.Builder
         /// </summary>
         /// <param name="messages">The strings to add.</param>
         /// <returns></returns>
-        public SuccessOutcomeBuilder<T> WithMessage(IEnumerable<string> messages)
+        public SuccessOutcomeBuilder<TValue, TStatusCode> WithMessage(IEnumerable<string> messages)
         {
             if (messages == null)
                 return this;
@@ -47,10 +47,21 @@ namespace Ether.Outcomes.Builder
         /// </summary>
         /// <param name="value">Specifies the value to wrap.</param>
         /// <returns></returns>
-        public SuccessOutcomeBuilder<T> WithValue(T value)
+        public SuccessOutcomeBuilder<TValue, TStatusCode> WithValue(TValue value)
         {
             base.Value = value;
             return this; 
+        }
+
+        /// <summary>
+        /// (optional) Sets the StatusCode, which is an additional piece of metadata you can use for your own purposes.
+        /// By default, this will take an int?, but you can set it to a generic type using the generic overload on
+        /// Outcomes.Success().
+        /// </summary>
+        public SuccessOutcomeBuilder<TValue, TStatusCode> WithStatusCode(TStatusCode statusCode)
+        {
+            base.StatusCode = statusCode;
+            return this;
         } 
     }
 }
