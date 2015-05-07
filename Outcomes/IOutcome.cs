@@ -16,7 +16,7 @@ namespace Ether.Outcomes
     {
         bool Success { get; }
         List<string> Messages { get; }
-        string FormatMultiLine(string delimiter);
+        string ToMultiLine(string delimiter = null);
         string ToString();
     }
 }

@@ -41,6 +41,7 @@
     <Compile Include="Builder\FailureOutcomeBuilder.cs" />
     <Compile Include="Builder\IFailureOutcomeBuilder.cs" />
     <Compile Include="Builder\SuccessOutcomeBuilder.cs" />
+    <Compile Include="Formats\MultiLineFormatter.cs" />
     <Compile Include="IOutcome.cs" />
     <Compile Include="OutcomeResult.cs" />
     <Compile Include="Outcomes.cs" />

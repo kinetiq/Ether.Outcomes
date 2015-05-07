@@ -25,7 +25,7 @@ namespace Ether.Outcomes.Tests
 
             Assert.IsFalse(outcome.Success);
             Assert.IsTrue(outcome.Messages.Count == 2);
-            Assert.IsTrue(outcome.FormatMultiLine("<br>") == "prefix message format<br>Exception: test message<br>");
+            Assert.IsTrue(outcome.ToMultiLine("<br>") == "prefix message format<br>Exception: test message<br>");
         }
     
         [TestMethod]
@@ -39,7 +39,7 @@ namespace Ether.Outcomes.Tests
 
             Assert.IsFalse(outcome.Success);
             Assert.IsTrue(outcome.Messages.Count == 2);
-            Assert.IsTrue(outcome.FormatMultiLine("<br>") == "prefix format<br>test<br>");
+            Assert.IsTrue(outcome.ToMultiLine("<br>") == "prefix format<br>test<br>");
         }
     }
 }

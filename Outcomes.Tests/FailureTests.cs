@@ -46,7 +46,7 @@ namespace Ether.Outcomes.Tests
             Assert.IsTrue(outcome.Value == 0);
             Assert.IsTrue(outcome.Messages.Count == 3);
             Assert.IsTrue(outcome.ToString() == "test1test2test3");
-            Assert.IsTrue(outcome.FormatMultiLine("<br>") == "test1<br>test2<br>test3<br>");
+            Assert.IsTrue(outcome.ToMultiLine("<br>") == "test1<br>test2<br>test3<br>");
         }
 
 
@@ -62,7 +62,7 @@ namespace Ether.Outcomes.Tests
             Assert.IsTrue(outcome.Value == 0);
             Assert.IsTrue(outcome.Messages.Count == 3);
             Assert.IsTrue(outcome.ToString() == "test1test2test3");
-            Assert.IsTrue(outcome.FormatMultiLine("<br>") == "test1<br>test2<br>test3<br>");
+            Assert.IsTrue(outcome.ToMultiLine("<br>") == "test1<br>test2<br>test3<br>");
         }
 
         [TestMethod]
@@ -74,7 +74,7 @@ namespace Ether.Outcomes.Tests
 
             Assert.IsFalse(outcome.Success);
             Assert.IsTrue(outcome.Messages.Count == 2);
-            Assert.IsTrue(outcome.FormatMultiLine("<br>") == "prefix message<br>Exception: test message<br>");
+            Assert.IsTrue(outcome.ToMultiLine("<br>") == "prefix message<br>Exception: test message<br>");
         }
 
 
@@ -88,7 +88,7 @@ namespace Ether.Outcomes.Tests
                                             .WithMessage("suffix");
             Assert.IsFalse(outcome.Success);
             Assert.IsTrue(outcome.Messages.Count == 3);
-            Assert.IsTrue(outcome.FormatMultiLine("<br>") == "prefix<br>Exception: test<br>suffix<br>");
+            Assert.IsTrue(outcome.ToMultiLine("<br>") == "prefix<br>Exception: test<br>suffix<br>");
         }
 
 
@@ -101,7 +101,7 @@ namespace Ether.Outcomes.Tests
 
             Assert.IsFalse(outcome.Success);
             Assert.IsTrue(outcome.Messages.Count == 2);
-            Assert.IsTrue(outcome.FormatMultiLine("<br>") == "prefix<br>test<br>");
+            Assert.IsTrue(outcome.ToMultiLine("<br>") == "prefix<br>test<br>");
         }
 
         [TestMethod]
@@ -115,7 +115,7 @@ namespace Ether.Outcomes.Tests
 
             Assert.IsFalse(outcome.Success);
             Assert.IsTrue(outcome.Messages.Count == 3);
-            Assert.IsTrue(outcome.FormatMultiLine("<br>") == "prefix<br>test<br>suffix<br>");
+            Assert.IsTrue(outcome.ToMultiLine("<br>") == "prefix<br>test<br>suffix<br>");
         }
 
         [TestMethod]
@@ -131,7 +131,7 @@ namespace Ether.Outcomes.Tests
 
             Assert.IsFalse(outcome.Success);
             Assert.IsTrue(outcome.Messages.Count == 3);
-            Assert.IsTrue(outcome.FormatMultiLine("<br>") == "prefix<br>test<br>suffix<br>");
+            Assert.IsTrue(outcome.ToMultiLine("<br>") == "prefix<br>test<br>suffix<br>");
         }
 
 

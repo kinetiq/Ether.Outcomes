@@ -55,6 +55,7 @@
     <Compile Include="FailureFormatTests.cs" />
     <Compile Include="Helpers\StatusCodes.cs" />
     <Compile Include="SuccessFormatTests.cs" />
+    <Compile Include="MultiLineFormatterTests.cs" />
     <Compile Include="SuccessTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
