@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Ether.Outcomes.Tests.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Ether.Outcomes.Tests
@@ -150,15 +149,6 @@ namespace Ether.Outcomes.Tests
                                   .WithStatusCode(200);
 
             Assert.IsTrue(outcome.StatusCode == 200);
-        }
-
-        [TestMethod]
-        public void Failure_StatusCode_WithStatusCode_Works_Generic()
-        {
-            var outcome = Outcomes.Failure<decimal, StatusCodes>()
-                                  .WithStatusCode(StatusCodes.New);
-
-            Assert.IsTrue(outcome.StatusCode == StatusCodes.New);
-        }   
+        }  
     }
 }

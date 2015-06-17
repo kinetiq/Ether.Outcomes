@@ -99,18 +99,9 @@ namespace Ether.Outcomes.Tests
         [TestMethod]
         public void Success_StatusCode_WithStatusCode_Works()
         {
-            var outcome = Outcomes.Success(23123.32M).WithStatusCode(200);
+            var outcome = Outcomes.Success(23123.32M).WithStatusCode((int) StatusCodes.New);
 
-            Assert.IsTrue(outcome.StatusCode == 200);
-        }
-
-        [TestMethod]
-        public void Success_StatusCode_WithStatusCode_Works_Generic()
-        {
-            var outcome = Outcomes.Success<decimal, StatusCodes>(23123.32M)
-                                  .WithStatusCode(StatusCodes.New);
-
-            Assert.IsTrue(outcome.StatusCode == StatusCodes.New);
-        }    
+            Assert.IsTrue(outcome.StatusCode == (int) StatusCodes.New);
+        } 
     }
 }

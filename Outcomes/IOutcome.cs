@@ -5,11 +5,7 @@ namespace Ether.Outcomes
     public interface IOutcome<TValue> : IOutcome
     {
         TValue Value { get; }
-    }
-
-    public interface IOutcome<TValue, TStatusCode> : IOutcome<TValue>
-    {
-        TStatusCode StatusCode { get; }
+        int? StatusCode { get; } 
     }
 
     public interface IOutcome
