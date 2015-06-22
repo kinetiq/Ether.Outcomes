@@ -69,11 +69,11 @@ namespace Ether.Outcomes.Tests
         {
             var exception = new InvalidOperationException("test message");
 
-            var outcome = Outcomes.Failure().FromException(exception, "prefix message");
+            var outcome = Outcomes.Failure().FromException(exception);
 
             Assert.IsFalse(outcome.Success);
-            Assert.IsTrue(outcome.Messages.Count == 2);
-            Assert.IsTrue(outcome.ToMultiLine("<br>") == "prefix message<br>Exception: test message<br>");
+            Assert.IsTrue(outcome.Messages.Count == 1);
+            Assert.IsTrue(outcome.ToMultiLine("<br>") == "Exception: test message<br>");
         }
 
 
@@ -88,19 +88,6 @@ namespace Ether.Outcomes.Tests
             Assert.IsFalse(outcome.Success);
             Assert.IsTrue(outcome.Messages.Count == 3);
             Assert.IsTrue(outcome.ToMultiLine("<br>") == "prefix<br>Exception: test<br>suffix<br>");
-        }
-
-
-        [TestMethod]
-        public void Failure_FromOutcome_Works()
-        {
-            var previousOutcome = Outcomes.Failure().WithMessage("test");
-
-            var outcome = Outcomes.Failure().FromOutcome(previousOutcome, "prefix");
-
-            Assert.IsFalse(outcome.Success);
-            Assert.IsTrue(outcome.Messages.Count == 2);
-            Assert.IsTrue(outcome.ToMultiLine("<br>") == "prefix<br>test<br>");
         }
 
         [TestMethod]
@@ -149,6 +136,19 @@ namespace Ether.Outcomes.Tests
                                   .WithStatusCode(200);
 
             Assert.IsTrue(outcome.StatusCode == 200);
-        }  
+        }
+
+        [TestMethod]
+        public void Failure_WithValue_Works()
+        {
+            var outcome = Outcomes.Failure<Decimal>()
+                                  .WithValue(23123.32M);
+
+            Assert.IsTrue(!outcome.Success);
+            Assert.IsTrue(outcome.Messages.Count == 0);
+            Assert.IsTrue(outcome.Value == 23123.32M);
+            Assert.IsTrue(outcome.ToString() == string.Empty);
+            Assert.IsTrue(outcome.ToMultiLine("<br>") == string.Empty);
+        }
     }
 }

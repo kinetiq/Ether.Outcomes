@@ -11,6 +11,7 @@ namespace Ether.Outcomes
     {
         int? StatusCode { get; } 
         bool Success { get; }
+        bool Failure { get; }
         List<string> Messages { get; }
         string ToMultiLine(string delimiter = null);
         string ToString();

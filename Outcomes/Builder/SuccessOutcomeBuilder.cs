@@ -43,6 +43,25 @@ namespace Ether.Outcomes.Builder
         }
 
         /// <summary>
+        /// Alternate syntax for FromOutcome. Adds messages from the specified outcome, if any.
+        /// </summary>
+        /// <param name="outcome">Source outcome that messages are pulled from.</param>
+        public SuccessOutcomeBuilder<TValue> WithMessagesFrom(IOutcome outcome)
+        {
+            FromOutcome(outcome);
+            return this;
+        }
+
+        /// <summary>
+        /// Alternate syntax for WithMessage. Adds a collection of messages to the end of the outcome's message list. 
+        /// </summary>
+        public SuccessOutcomeBuilder<TValue> WithMessagesFrom(IEnumerable<string> messages)
+        {
+            WithMessage(messages);
+            return this;
+        }
+
+        /// <summary>
         /// Sets the value for a success outcome. The outcome object is just a wrapper for the value.
         /// </summary>
         /// <param name="value">Specifies the value to wrap.</param>
@@ -54,11 +73,22 @@ namespace Ether.Outcomes.Builder
         }
 
         /// <summary>
-        /// (optional) Sets the StatusCode, which is an additional piece of metadata you can use for your own purposes.
+        /// (optional) Sets the StatusCode, which is an additional piece of metadata you can use for your own purposes. 
+        /// This is handy when there could be, for instance, multiple failure modes. 
         /// </summary>
         public SuccessOutcomeBuilder<TValue> WithStatusCode(int? statusCode)
         {
             base.StatusCode = statusCode;
+            return this;
+        }
+
+        /// <summary>
+        /// Adds messages from the specified outcome.
+        /// </summary>
+        /// <param name="outcome">Source outcome that messages are pulled from. If there are no messages, execution continues.</param>
+        public SuccessOutcomeBuilder<TValue> FromOutcome(IOutcome outcome)
+        {
+            WithMessage(outcome.Messages);
             return this;
         }
     }

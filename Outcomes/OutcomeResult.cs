@@ -45,5 +45,10 @@ namespace Ether.Outcomes
         {
             return MultiLineFormatter.ToMultiLine(delimiter, Messages);
         }
+
+        public bool Failure
+        {
+            get { return !Success; }           
+        }
     }
 }

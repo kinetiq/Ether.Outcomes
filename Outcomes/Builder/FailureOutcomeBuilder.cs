@@ -16,16 +16,8 @@ namespace Ether.Outcomes.Builder
         /// Adds messages from the specified exception. Internally, Outcome.Net calls exception.Message to generate the messages.
         /// </summary>
         /// <param name="exception">Exception used to generate the message.</param>
-        /// <param name="message">Optional message that will appear after the exception's messages.</param>
-        /// <param name="paramList">Shorthand for String.Format</param>
-        public IFailureOutcomeBuilder<TValue> FromException(Exception exception, string message = null, params object[] paramList)
+        public IFailureOutcomeBuilder<TValue> FromException(Exception exception)
         {
-            if (message != null)
-            {
-                message = string.Format(message, paramList);
-                Messages.Add(message);
-            } 
-
             base.Messages.Add("Exception: " + exception.Message);
             return this; 
         }
@@ -34,17 +26,9 @@ namespace Ether.Outcomes.Builder
         /// Adds messages from the specified outcome.
         /// </summary>
         /// <param name="outcome">Source outcome that messages are pulled from. If there are no messages, execution continues.</param>
-        /// <param name="message">Optional message that will appear after the specified outcome's messages.</param>
-        /// <param name="paramList">Shorthand for String.Format</param>
-        public IFailureOutcomeBuilder<TValue> FromOutcome(IOutcome outcome, string message = null, params object[] paramList)
+        public new IFailureOutcomeBuilder<TValue> FromOutcome(IOutcome outcome)
         {
-            if (message != null)
-            {
-                message = string.Format(message, paramList);
-                Messages.Add(message);
-            } 
-
-            base.WithMessage(outcome.Messages);
+            base.FromOutcome(outcome);
             return this;
         }
 
@@ -72,18 +56,16 @@ namespace Ether.Outcomes.Builder
         /// Alternate syntax for FromOutcome. Adds messages from the specified outcome, if any.
         /// </summary>
         /// <param name="outcome">Source outcome that messages are pulled from.</param>
-        /// <param name="message">Optional message that will appear after the specified outcome's messages.</param>
-        /// <param name="paramList">Shorthand for String.Format</param>
-        public IFailureOutcomeBuilder<TValue> WithMessagesFrom(IOutcome outcome, string message = null, params object[] paramList)
+        public new IFailureOutcomeBuilder<TValue> WithMessagesFrom(IOutcome outcome)
         {
-            FromOutcome(outcome, message, paramList);
+            base.FromOutcome(outcome);
             return this;
         }
 
         /// <summary>
         /// Alternate syntax for WithMessage. Adds a collection of messages to the end of the outcome's message list. 
         /// </summary>
-        public IFailureOutcomeBuilder<TValue> WithMessagesFrom(IEnumerable<string> messages)
+        public new IFailureOutcomeBuilder<TValue> WithMessagesFrom(IEnumerable<string> messages)
         {
             base.WithMessage(messages);
             return this;
@@ -92,6 +74,16 @@ namespace Ether.Outcomes.Builder
         public new IFailureOutcomeBuilder<TValue> WithStatusCode(int? statusCode)
         {
             base.WithStatusCode(statusCode);
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the value for a failure outcome. The outcome object is just a wrapper for the value.
+        /// </summary>
+        /// <param name="value">Specifies the value to wrap.</param>
+        public new IFailureOutcomeBuilder<TValue> WithValue(TValue value)
+        {
+            base.WithValue(value);
             return this;
         }
     }

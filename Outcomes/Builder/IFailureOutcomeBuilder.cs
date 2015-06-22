@@ -9,20 +9,16 @@ namespace Ether.Outcomes.Builder
         /// Adds an exception's message to the outcome's message collection. 
         /// </summary>
         /// <param name="exception">The exception to record.</param>
-        /// <param name="message">Optional note that will show up before the exception's message.</param>
-        /// <param name="paramList">Shorthand for String.Format</param>
         /// <returns></returns>
-        IFailureOutcomeBuilder<TValue> FromException(Exception exception, string message = null, params object[] paramList);
+        IFailureOutcomeBuilder<TValue> FromException(Exception exception);
 
         /// <summary>
         /// Add an outcome's message to the message list.
         /// Useful for unwinding deep calls where several methods have something to add about the failure. 
         /// </summary>
         /// <param name="outcome">A failure outcome.</param>
-        /// <param name="message">Optional message to add before the source outcome's message.</param>
-        /// <param name="paramList">Shorthand for String.Format</param>
         /// <returns></returns>
-        IFailureOutcomeBuilder<TValue> FromOutcome(IOutcome outcome, string message = null, params object[] paramList);
+        IFailureOutcomeBuilder<TValue> FromOutcome(IOutcome outcome);
 
         /// <summary>
         /// Add a string to the end of the outcome's message collection.
@@ -43,9 +39,7 @@ namespace Ether.Outcomes.Builder
         /// Alternate syntax for FromOutcome. Adds messages from the specified outcome (if any).
         /// </summary>
         /// <param name="outcome">Source outcome that messages are pulled from.</param>
-        /// <param name="message">Optional message that will appear after the specified outcome's messages.</param>
-        /// <param name="paramList">Shorthand for String.Format</param>
-        IFailureOutcomeBuilder<TValue> WithMessagesFrom(IOutcome outcome, string message = null, params object[] paramList);
+        IFailureOutcomeBuilder<TValue> WithMessagesFrom(IOutcome outcome);
 
         /// <summary>
         /// Alternate syntax for WithMessage. Adds messages to the end of the message collection.
@@ -53,5 +47,11 @@ namespace Ether.Outcomes.Builder
         IFailureOutcomeBuilder<TValue> WithMessagesFrom(IEnumerable<string> messages);
 
         IFailureOutcomeBuilder<TValue> WithStatusCode(int? statusCode);
+
+        /// <summary>
+        /// Sets the value for a failure outcome. The outcome object is just a wrapper for the value.
+        /// </summary>
+        /// <param name="value">Specifies the value to wrap.</param>
+        IFailureOutcomeBuilder<TValue> WithValue(TValue value);
     }
 }
