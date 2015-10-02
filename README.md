@@ -4,7 +4,7 @@ Outcome is the ultimate result wrapper! It's great for those awkward moments whe
 
 It's a fluent, expressive, easy-to-learn spin on the <a href="http://martinfowler.com/dslCatalog/notification.html">Notification pattern</a>, with a few careful tweaks.
 
-Outcome is particularly useful in MVC projects that do a lot of AJAX calls. If you serialize Outcome objects back to the client, you end up with a standard interface, and that opens doors for reuse on the JavaScript side.
+Outcome is particularly useful in MVC projects that do a lot of AJAX calls. If you serialize Outcome objects back to the client, you end up with a standard interface for most of your callbacks, and that opens doors for reuse on the JavaScript side.
 
 How can I get started?
 ==============
