@@ -20,6 +20,7 @@ namespace Ether.Outcomes
         public List<string> Messages { get; protected set; }
         public TValue Value { get; set; }
         public int? StatusCode { get; protected set; }
+        public Dictionary<string, string> Keys { get; }
 
         internal OutcomeResult(bool success)
         {
@@ -27,6 +28,7 @@ namespace Ether.Outcomes
             Messages = new List<string>();
             Value = default(TValue);
             StatusCode = null;
+            Keys = new Dictionary<string, string>();
         }
 
         /// <returns>The message list, concatenated.</returns>
@@ -46,9 +48,6 @@ namespace Ether.Outcomes
             return MultiLineFormatter.ToMultiLine(delimiter, Messages);
         }
 
-        public bool Failure
-        {
-            get { return !Success; }           
-        }
+        public bool Failure => !Success;
     }
 }

@@ -102,6 +102,17 @@ namespace Ether.Outcomes.Tests
             var outcome = Outcomes.Success(23123.32M).WithStatusCode((int) StatusCodes.New);
 
             Assert.IsTrue(outcome.StatusCode == (int) StatusCodes.New);
-        } 
+        }
+
+        [TestMethod]
+        public void Success_Keys_WithKey_Works()
+        {
+            var outcome = Outcomes.Success(23123.32M)
+                                  .WithKey("test1", "value1")
+                                  .WithKey("test2", "value2");
+
+            Assert.IsTrue(outcome.Keys["test1"] == "value1");
+            Assert.IsTrue(outcome.Keys["test2"] == "value2");
+        }
     }
 }

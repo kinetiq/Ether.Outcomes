@@ -150,5 +150,16 @@ namespace Ether.Outcomes.Tests
             Assert.IsTrue(outcome.ToString() == string.Empty);
             Assert.IsTrue(outcome.ToMultiLine("<br>") == string.Empty);
         }
+
+        [TestMethod]
+        public void Failure_Keys_WithKey_Works()
+        {
+            var outcome = Outcomes.Failure()
+                                  .WithKey("test1", "value1")
+                                  .WithKey("test2", "value2");
+
+            Assert.IsTrue(outcome.Keys["test1"] == "value1");
+            Assert.IsTrue(outcome.Keys["test2"] == "value2");
+        }
     }
 }

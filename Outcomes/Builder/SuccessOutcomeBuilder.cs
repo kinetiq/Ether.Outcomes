@@ -76,9 +76,20 @@ namespace Ether.Outcomes.Builder
         /// (optional) Sets the StatusCode, which is an additional piece of metadata you can use for your own purposes. 
         /// This is handy when there could be, for instance, multiple failure modes. 
         /// </summary>
+        [Obsolete("This will eventually be replaced by the new Keys dictionary.")]
         public SuccessOutcomeBuilder<TValue> WithStatusCode(int? statusCode)
         {
             base.StatusCode = statusCode;
+            return this;
+        }
+
+        /// <summary>
+        /// (optional) Sets a key value pair, which is additional metadata you can use for your own purposes. 
+        /// This is handy for status codes, or any case where you need to return more than one value. 
+        /// </summary>
+        public SuccessOutcomeBuilder<TValue> WithKey(string key, string value)
+        {
+            base.Keys[key] = value;
             return this;
         }
 

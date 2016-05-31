@@ -71,6 +71,7 @@ namespace Ether.Outcomes.Builder
             return this;
         }
 
+        [Obsolete("This will eventually be replaced by the new Keys dictionary.")]
         public new IFailureOutcomeBuilder<TValue> WithStatusCode(int? statusCode)
         {
             base.WithStatusCode(statusCode);
@@ -84,6 +85,16 @@ namespace Ether.Outcomes.Builder
         public new IFailureOutcomeBuilder<TValue> WithValue(TValue value)
         {
             base.WithValue(value);
+            return this;
+        }
+
+        /// <summary>
+        /// (optional) Sets a key value pair, which is additional metadata you can use for your own purposes. 
+        /// This is handy for status codes, or any case where you need to return more than one value. 
+        /// </summary>
+        public new IFailureOutcomeBuilder<TValue> WithKey(string key, string value)
+        {
+            base.WithKey(key, value);
             return this;
         }
     }
