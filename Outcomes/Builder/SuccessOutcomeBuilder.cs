@@ -31,7 +31,7 @@ namespace Ether.Outcomes.Builder
         /// <summary>
         /// Append a list of strings to the end of the outcome's message collection.
         /// </summary>
-        /// <param name="messages">The strings to add.</param>
+        /// <param name="messages">Enum of srings to add.</param>
         /// <returns></returns>
         public SuccessOutcomeBuilder<TValue> WithMessage(IEnumerable<string> messages)
         {
@@ -43,12 +43,12 @@ namespace Ether.Outcomes.Builder
         }
 
         /// <summary>
-        /// Alternate syntax for FromOutcome. Adds messages from the specified outcome, if any.
+        /// Adds messages from the specified outcome, if any.
         /// </summary>
         /// <param name="outcome">Source outcome that messages are pulled from.</param>
         public SuccessOutcomeBuilder<TValue> WithMessagesFrom(IOutcome outcome)
         {
-            FromOutcome(outcome);
+            WithMessage(outcome.Messages);
             return this;
         }
 
@@ -84,6 +84,18 @@ namespace Ether.Outcomes.Builder
         }
 
         /// <summary>
+        /// Adds keys from the specified outcome, if any.
+        /// </summary>
+        /// <param name="outcome">Source outcome that messages are pulled from.</param>
+        public SuccessOutcomeBuilder<TValue> WithKeysFrom(IOutcome outcome)
+        {
+            foreach (var key in outcome.Keys.Keys)
+                this.Keys[key] = outcome.Keys[key];
+
+            return this;
+        }
+
+        /// <summary>
         /// (optional) Sets a key value pair, which is additional metadata you can use for your own purposes. 
         /// This is handy for status codes, or any case where you need to return more than one value. 
         /// </summary>
@@ -94,12 +106,14 @@ namespace Ether.Outcomes.Builder
         }
 
         /// <summary>
-        /// Adds messages from the specified outcome.
+        /// Adds messages and keys from the specified outcome.
         /// </summary>
-        /// <param name="outcome">Source outcome that messages are pulled from. If there are no messages, execution continues.</param>
+        /// <param name="outcome">Source outcome that keys are pulled from.</param>
         public SuccessOutcomeBuilder<TValue> FromOutcome(IOutcome outcome)
         {
             WithMessage(outcome.Messages);
+            WithKeysFrom(outcome);
+
             return this;
         }
     }

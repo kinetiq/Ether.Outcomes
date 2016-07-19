@@ -23,9 +23,9 @@ namespace Ether.Outcomes.Builder
         }
 
         /// <summary>
-        /// Adds messages from the specified outcome.
+        /// Adds messages and keys from the specified outcome.
         /// </summary>
-        /// <param name="outcome">Source outcome that messages are pulled from. If there are no messages, execution continues.</param>
+        /// <param name="outcome">Source outcome that messages and keys are pulled from.</param>
         public new IFailureOutcomeBuilder<TValue> FromOutcome(IOutcome outcome)
         {
             base.FromOutcome(outcome);
@@ -53,12 +53,12 @@ namespace Ether.Outcomes.Builder
         }
 
         /// <summary>
-        /// Alternate syntax for FromOutcome. Adds messages from the specified outcome, if any.
+        /// Adds messages from the specified outcome, if any.
         /// </summary>
         /// <param name="outcome">Source outcome that messages are pulled from.</param>
         public new IFailureOutcomeBuilder<TValue> WithMessagesFrom(IOutcome outcome)
         {
-            base.FromOutcome(outcome);
+            base.WithMessage(outcome.Messages);
             return this;
         }
 
@@ -85,6 +85,17 @@ namespace Ether.Outcomes.Builder
         public new IFailureOutcomeBuilder<TValue> WithValue(TValue value)
         {
             base.WithValue(value);
+            return this;
+        }
+
+        /// <summary>
+        /// Adds keys from the specified outcome, if any.
+        /// </summary>
+        /// <param name="outcome">Source outcome that messages are pulled from.</param>
+        public new IFailureOutcomeBuilder<TValue> WithKeysFrom(IOutcome outcome)
+        {
+            base.WithKeysFrom(outcome);
+
             return this;
         }
 

@@ -52,6 +52,20 @@ namespace Ether.Outcomes.Tests
         }
 
         [TestMethod]
+        public void Success_WithKeysFrom_Works()
+        {
+            var outcome1 = Outcomes.Success<int>()
+                                  .WithKey("test", 35);
+
+            var outcome2 = Outcomes.Success().WithKeysFrom(outcome1);
+            var outcome3 = Outcomes.Success().FromOutcome(outcome1);
+
+            Assert.IsTrue(outcome1.Keys["test"].Equals(35));
+            Assert.IsTrue(outcome2.Keys["test"].Equals(35));
+            Assert.IsTrue(outcome3.Keys["test"].Equals(35));
+        }
+
+        [TestMethod]
         public void Success_WithValue_Works()
         {
             var outcome = Outcomes.Success<Decimal>(23123.32M);

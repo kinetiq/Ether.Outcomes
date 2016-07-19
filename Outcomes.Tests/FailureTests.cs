@@ -54,7 +54,7 @@ namespace Ether.Outcomes.Tests
         {
             var messages = new List<string> { "test2", "test3" };
 
-            var outcome = Outcomes.Failure<int>().WithMessage("test1")
+            var outcome = Outcomes.Failure<int>().WithMessage("test1")                                                
                                                  .WithMessagesFrom(messages);
 
             Assert.IsFalse(outcome.Success);
@@ -63,6 +63,22 @@ namespace Ether.Outcomes.Tests
             Assert.IsTrue(outcome.ToString() == "test1test2test3");
             Assert.IsTrue(outcome.ToMultiLine("<br>") == "test1<br>test2<br>test3<br>");
         }
+
+
+        [TestMethod]
+        public void Failure_WithKeysFrom_Works()
+        {
+            var outcome1 = Outcomes.Failure()
+                                   .WithKey("test", 35);
+
+            var outcome2 = Outcomes.Failure().WithKeysFrom(outcome1);
+            var outcome3 = Outcomes.Failure().FromOutcome(outcome1);
+
+            Assert.IsTrue(outcome1.Keys["test"].Equals(35));
+            Assert.IsTrue(outcome2.Keys["test"].Equals(35));
+            Assert.IsTrue(outcome3.Keys["test"].Equals(35));
+        }
+
 
         [TestMethod]
         public void Failure_FromException_Works()
