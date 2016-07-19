@@ -20,7 +20,7 @@ namespace Ether.Outcomes
         public List<string> Messages { get; protected set; }
         public TValue Value { get; set; }
         public int? StatusCode { get; protected set; }
-        public Dictionary<string, string> Keys { get; }
+        public Dictionary<string, object> Keys { get; }
 
         internal OutcomeResult(bool success)
         {
@@ -28,7 +28,7 @@ namespace Ether.Outcomes
             Messages = new List<string>();
             Value = default(TValue);
             StatusCode = null;
-            Keys = new Dictionary<string, string>();
+            Keys = new Dictionary<string, object>();
         }
 
         /// <returns>The message list, concatenated.</returns>

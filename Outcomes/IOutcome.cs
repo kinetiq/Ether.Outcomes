@@ -15,6 +15,6 @@ namespace Ether.Outcomes
         List<string> Messages { get; }
         string ToMultiLine(string delimiter = null);
         string ToString();
-        Dictionary<string, string> Keys { get; }
+        Dictionary<string, object> Keys { get; }
     }
 }

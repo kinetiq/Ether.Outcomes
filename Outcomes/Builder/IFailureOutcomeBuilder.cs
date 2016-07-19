@@ -54,6 +54,6 @@ namespace Ether.Outcomes.Builder
         /// <param name="value">Specifies the value to wrap.</param>
         IFailureOutcomeBuilder<TValue> WithValue(TValue value);
 
-        IFailureOutcomeBuilder<TValue> WithKey(string key, string value);
+        IFailureOutcomeBuilder<TValue> WithKey(string key, object value);
     }
 }

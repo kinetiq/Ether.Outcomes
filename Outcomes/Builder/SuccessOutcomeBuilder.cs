@@ -87,7 +87,7 @@ namespace Ether.Outcomes.Builder
         /// (optional) Sets a key value pair, which is additional metadata you can use for your own purposes. 
         /// This is handy for status codes, or any case where you need to return more than one value. 
         /// </summary>
-        public SuccessOutcomeBuilder<TValue> WithKey(string key, string value)
+        public SuccessOutcomeBuilder<TValue> WithKey(string key, object value)
         {
             base.Keys[key] = value;
             return this;
