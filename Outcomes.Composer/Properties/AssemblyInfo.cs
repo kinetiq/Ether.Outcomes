@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Ether.Outcomes.Pipeline")]
+[assembly: AssemblyTitle("Ether.Outcomes.Composer")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Kinetiq")]
-[assembly: AssemblyProduct("Ether.Outcomes.Pipeline")]
+[assembly: AssemblyProduct("Ether.Outcomes.Composer")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
