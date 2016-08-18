@@ -14,7 +14,7 @@ namespace Ether.Outcomes.Composer
 
         public OutcomeStep(IOutcome<T> outcome, bool previousExpressionExecuted) : base(outcome)
         {
-            IsPreviousExpressionExecuted = previousExpressionExecuted;;
+            IsPreviousExpressionExecuted = previousExpressionExecuted;
         }
 
         /// <summary>

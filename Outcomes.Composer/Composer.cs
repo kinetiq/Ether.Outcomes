@@ -1,5 +1,4 @@
 ﻿using System;
-
 namespace Ether.Outcomes.Composer
 {
     public static class Composer
@@ -11,9 +10,15 @@ namespace Ether.Outcomes.Composer
             return new OutcomeStep<T>(outcome, true);
         }
 
-        public static OutcomeStep<object> Execute(Func<IOutcome<object>> expression)
+        public static OutcomeStep<object> Execute(Func<IOutcome> expression)
         {
-            return Execute<object>(expression);
+            IOutcome outcome = expression();
+
+            //this should happen inside an overload of OutcomeStep's constructor,
+            //but due to peculiarities of generics, that didn't work.
+            var result = new OutcomeResult<object>(outcome);
+
+            return new OutcomeStep<object>(result, true);
         }
     }
 

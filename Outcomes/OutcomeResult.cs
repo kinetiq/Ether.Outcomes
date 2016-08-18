@@ -44,6 +44,19 @@ namespace Ether.Outcomes
             Keys = outcome.Keys;
         }
 
+        /// <summary>
+        /// Used in cases where we need to create an OutcomeResult from an Outcome.
+        /// This was implemented for use in Outcomes.Pipeline
+        /// </summary>
+        internal OutcomeResult(IOutcome outcome)
+        {
+            Success = outcome.Success;
+            Messages = outcome.Messages;
+            Value = default(TValue);
+            StatusCode = outcome.StatusCode;
+            Keys = outcome.Keys;
+        }
+
         /// <returns>The message list, concatenated.</returns>
         public override string ToString()
         {

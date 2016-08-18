@@ -125,8 +125,8 @@ namespace Ether.Outcomes.Tests
                                   .WithKey("test1", "value1")
                                   .WithKey("test2", "value2");
 
-            Assert.IsTrue(outcome.Keys["test1"] == "value1");
-            Assert.IsTrue(outcome.Keys["test2"] == "value2");
+            Assert.IsTrue((string) outcome.Keys["test1"] == "value1");
+            Assert.IsTrue((string) outcome.Keys["test2"] == "value2");
         }
     }
 }
