@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="FailureTests.cs" />
     <Compile Include="Helpers\StatusCodes.cs" />
+    <Compile Include="Helpers\ExampleBase.cs" />
     <Compile Include="SuccessFormatTests.cs" />
     <Compile Include="MultiLineFormatterTests.cs" />
     <Compile Include="SuccessTests.cs" />

@@ -114,6 +114,22 @@ namespace Ether.Outcomes.Builder
             WithMessage(outcome.Messages);
             WithKeysFrom(outcome);
 
+            //If outcome has a Value, and if we can coerce it into TValue, 
+            //we should do so.          
+            if (outcome.GetType().IsGenericType) //only generics have Value 
+            {
+                //get the contents of value
+                var value = outcome.GetType()
+                    .GetProperty("Value")
+                    .GetValue(outcome, null);
+
+                if (value is TValue) //are these types compatibile? 
+                    WithValue((TValue) value); //if so, caste and assign.
+
+                //We could possibly throw here... But it isn't clear whether that 
+                //would be desirable. TBD.
+            }
+
             return this;
         }
     }

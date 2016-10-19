@@ -66,6 +66,42 @@ namespace Ether.Outcomes.Tests
         }
 
         [TestMethod]
+        public void Success_FromOutcome_Persists_Values()
+        {
+            var outcome1 = Outcomes.Success<int>()
+                                   .WithValue(10);
+
+            var outcome2 = Outcomes.Success()
+                                   .WithValue(20);
+
+            //In this case, some casting is going to happen.
+            var outcome3 = Outcomes.Success<ExampleConcrete>()
+                                   .WithValue(new ExampleConcrete() { SomeInt = 0, SomeString = "not important"});
+
+            //In this case, there's a null value.
+            var outcome4 = Outcomes.Success<ExampleConcrete>()
+                                   .WithValue(null);
+
+            //In this case, there's an incompatible type, so we should end up
+            //without a value.
+            var outcome5 = Outcomes.Success<string>()
+                                   .WithValue("test");
+
+
+            var from1 = Outcomes.Success().FromOutcome(outcome1);
+            var from2 = Outcomes.Success().FromOutcome(outcome2);
+            var from3 = Outcomes.Success<ExampleBase>().FromOutcome(outcome3);
+            var from4 = Outcomes.Success<ExampleBase>().FromOutcome(outcome4);
+            var from5 = Outcomes.Success<ExampleBase>().FromOutcome(outcome5);
+
+            Assert.IsTrue(from1.Value.Equals(10));
+            Assert.IsTrue(from2.Value.Equals(20));
+            Assert.IsTrue(from3.Value.SomeString == "not important");
+            Assert.IsTrue(from4.Value == null);
+            Assert.IsTrue(from5.Value == null);
+        }
+
+        [TestMethod]
         public void Success_WithValue_Works()
         {
             var outcome = Outcomes.Success<Decimal>(23123.32M);
