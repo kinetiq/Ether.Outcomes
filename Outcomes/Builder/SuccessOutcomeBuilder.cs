@@ -114,23 +114,38 @@ namespace Ether.Outcomes.Builder
         {
             WithMessage(outcome.Messages);
             WithKeysFrom(outcome);
+   
+#if NET45 || NET40
+                //If outcome has a Value, and if we can coerce it into TValue, 
+                //we should do so.       
 
-            //If outcome has a Value, and if we can coerce it into TValue, 
-            //we should do so.          
-            if (outcome.GetType().GetTypeInfo().IsGenericType) //only generics have Value 
-            {
-                //get the contents of value
-                var value = outcome.GetType()
-                    .GetTypeInfo()
+                if (outcome.GetType().IsGenericType) //only generics have Value 
+               {                
+                    //get the contents of value
+                    var value = outcome.GetType()
                     .GetProperty("Value")
                     .GetValue(outcome, null);
 
                 if (value is TValue) //are these types compatibile? 
-                    WithValue((TValue) value); //if so, caste and assign.
+                    WithValue((TValue)value); //if so, caste and assign.
+                }
+#endif
 
-                //We could possibly throw here... But it isn't clear whether that 
-                //would be desirable. TBD.
-            }
+#if NETSTANDARD1_2
+                //If outcome has a Value, and if we can coerce it into TValue, 
+                //we should do so.       
+                if (outcome.GetType().GetTypeInfo().IsGenericType) //only generics have Value 
+                {                
+                    //get the contents of value
+                    var value = outcome.GetType().GetTypeInfo()
+                    .GetProperty("Value")
+                    .GetValue(outcome, null);
+
+                if (value is TValue) //are these types compatibile? 
+                    WithValue((TValue)value); //if so, caste and assign.
+                }
+
+#endif
 
             return this;
         }
