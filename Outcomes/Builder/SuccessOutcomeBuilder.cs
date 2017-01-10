@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using JetBrains.Annotations;
 
 namespace Ether.Outcomes.Builder
@@ -116,10 +117,11 @@ namespace Ether.Outcomes.Builder
 
             //If outcome has a Value, and if we can coerce it into TValue, 
             //we should do so.          
-            if (outcome.GetType().IsGenericType) //only generics have Value 
+            if (outcome.GetType().GetTypeInfo().IsGenericType) //only generics have Value 
             {
                 //get the contents of value
                 var value = outcome.GetType()
+                    .GetTypeInfo()
                     .GetProperty("Value")
                     .GetValue(outcome, null);
 

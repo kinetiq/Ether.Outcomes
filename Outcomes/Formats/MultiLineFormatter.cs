@@ -3,7 +3,7 @@ using System.Text;
 
 namespace Ether.Outcomes.Formats
 {
-    internal class MultiLineFormatter
+    public class MultiLineFormatter
     {
         /// <summary>
         /// Dumps the message list into a string, with a delimiter after each line. 

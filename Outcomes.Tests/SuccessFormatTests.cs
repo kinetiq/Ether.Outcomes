@@ -1,18 +1,17 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Xunit;
 
 namespace Ether.Outcomes.Tests
 {
-    [TestClass]
     public class SuccessFormatTests
     {
-        [TestMethod]
+        [Fact]
         public void Success_WithMessage_Supports_Format()
         {
             IOutcome outcome = Outcomes.Success()
                                        .WithMessage("Bob {0} at {1}", "wins", "life");
 
-            Assert.IsTrue(outcome.Success);
-            Assert.IsTrue(outcome.ToString() == "Bob wins at life");
+            Assert.True(outcome.Success);
+            Assert.True(outcome.ToString() == "Bob wins at life");
         }
     }
 }

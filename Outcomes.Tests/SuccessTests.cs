@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using Ether.Outcomes.Tests.Helpers;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+using Xunit;
 
 namespace Ether.Outcomes.Tests
 {
-    [TestClass]
     public class SuccessTests
     {
-        [TestMethod]
+        [Fact]
         public void Success_Messages_Not_Null_By_Default()
         {
             IOutcome outcome = Outcomes.Success();
 
-            Assert.IsTrue(outcome.Success);
-            Assert.IsNotNull(outcome.Messages);
-            Assert.IsTrue(outcome.ToString() == string.Empty);
+            Assert.True(outcome.Success);
+            Assert.NotNull(outcome.Messages);
+            Assert.True(outcome.ToString() == string.Empty);
         }
 
         public IOutcome<int> Method()
@@ -23,18 +23,18 @@ namespace Ether.Outcomes.Tests
             return Outcomes.Success<int>();
         }
 
-        [TestMethod]
+        [Fact]
         public void Success_Messages_OfT_Not_Null_By_Default()
         {
             IOutcome<int> outcome = Outcomes.Success<int>();
 
-            Assert.IsTrue(outcome.Success);
-            Assert.IsNotNull(outcome.Messages);
-            Assert.IsTrue(outcome.Value == 0);
-            Assert.IsTrue(outcome.ToString() == string.Empty);
+            Assert.True(outcome.Success);
+            Assert.NotNull(outcome.Messages);
+            Assert.True(outcome.Value == 0);
+            Assert.True(outcome.ToString() == string.Empty);
         }
 
-        [TestMethod]
+        [Fact]
         public void Success_Basic_Chaining_Works()
         {
             var messages = new List<string> {"test2", "test3"};
@@ -43,15 +43,15 @@ namespace Ether.Outcomes.Tests
                                                  .WithMessage("test1")
                                                  .WithMessage(messages);
 
-            Assert.IsTrue(outcome.Success);
-            Assert.IsTrue(outcome.Value == 32);
-            Assert.IsTrue(outcome.StatusCode == 401);
-            Assert.IsTrue(outcome.Messages.Count == 3);
-            Assert.IsTrue(outcome.ToString() == "test1test2test3");
-            Assert.IsTrue(outcome.ToMultiLine("<br>") == "test1<br>test2<br>test3<br>");
+            Assert.True(outcome.Success);
+            Assert.True(outcome.Value == 32);
+            Assert.True(outcome.StatusCode == 401);
+            Assert.True(outcome.Messages.Count == 3);
+            Assert.True(outcome.ToString() == "test1test2test3");
+            Assert.True(outcome.ToMultiLine("<br>") == "test1<br>test2<br>test3<br>");
         }
 
-        [TestMethod]
+        [Fact]
         public void Success_WithKeysFrom_Works()
         {
             var outcome1 = Outcomes.Success<int>()
@@ -60,12 +60,12 @@ namespace Ether.Outcomes.Tests
             var outcome2 = Outcomes.Success().WithKeysFrom(outcome1);
             var outcome3 = Outcomes.Success().FromOutcome(outcome1);
 
-            Assert.IsTrue(outcome1.Keys["test"].Equals(35));
-            Assert.IsTrue(outcome2.Keys["test"].Equals(35));
-            Assert.IsTrue(outcome3.Keys["test"].Equals(35));
+            Assert.True(outcome1.Keys["test"].Equals(35));
+            Assert.True(outcome2.Keys["test"].Equals(35));
+            Assert.True(outcome3.Keys["test"].Equals(35));
         }
 
-        [TestMethod]
+        [Fact]
         public void Success_FromOutcome_Persists_Values()
         {
             var outcome1 = Outcomes.Success<int>()
@@ -94,75 +94,76 @@ namespace Ether.Outcomes.Tests
             var from4 = Outcomes.Success<ExampleBase>().FromOutcome(outcome4);
             var from5 = Outcomes.Success<ExampleBase>().FromOutcome(outcome5);
 
-            Assert.IsTrue(from1.Value.Equals(10));
-            Assert.IsTrue(from2.Value.Equals(20));
-            Assert.IsTrue(from3.Value.SomeString == "not important");
-            Assert.IsTrue(from4.Value == null);
-            Assert.IsTrue(from5.Value == null);
+            Assert.True(from1.Value.Equals(10));
+            Assert.True(from2.Value.Equals(20));
+            Assert.True(from3.Value.SomeString == "not important");
+            Assert.True(from4.Value == null);
+            Assert.True(from5.Value == null);
         }
 
-        [TestMethod]
+        [Fact]
         public void Success_WithValue_Works()
         {
             var outcome = Outcomes.Success<Decimal>(23123.32M);
 
-            Assert.IsTrue(outcome.Success);
-            Assert.IsTrue(outcome.Messages.Count == 0);
-            Assert.IsTrue(outcome.Value == 23123.32M);
-            Assert.IsTrue(outcome.ToString() == string.Empty);
-            Assert.IsTrue(outcome.ToMultiLine("<br>") == string.Empty);
+            Assert.True(outcome.Success);
+            Assert.True(outcome.Messages.Count == 0);
+            Assert.True(outcome.Value == 23123.32M);
+            Assert.True(outcome.ToString() == string.Empty);
+            Assert.True(outcome.ToMultiLine("<br>") == string.Empty);
         }
 
-        [TestMethod]
+        [Fact]
         public void Success_WithValue_And_Message_Works()
         {
             var outcome = Outcomes.Success<string>()
                                   .WithValue("9An@nsd!d")
                                   .WithMessage("Encrypted value retrieved in 5s!");
 
-            Assert.IsTrue(outcome.Success);
-            Assert.IsTrue(outcome.Value == "9An@nsd!d");
-            Assert.IsTrue(outcome.Messages.Count == 1);
-            Assert.IsTrue(outcome.ToMultiLine() == "Encrypted value retrieved in 5s!");
+            Assert.True(outcome.Success);
+            Assert.True(outcome.Value == "9An@nsd!d");
+            Assert.True(outcome.Messages.Count == 1);
+            Assert.True(outcome.ToMultiLine() == "Encrypted value retrieved in 5s!");
         }
 
-        [TestMethod]
+        [Fact]
         public void Success_WithValue_Works_Even_If_Generic_Not_Specified()
         {
             var outcome = Outcomes.Success(23123.32M);
 
-            Assert.IsTrue(outcome.Success);
-            Assert.IsTrue(outcome.Messages.Count == 0);
-            Assert.IsTrue(outcome.Value == 23123.32M);
-            Assert.IsTrue(outcome.ToString() == string.Empty);
-            Assert.IsTrue(outcome.ToMultiLine("<br>") == string.Empty);
+            Assert.True(outcome.Success);
+            Assert.True(outcome.Messages.Count == 0);
+            Assert.True(outcome.Value == 23123.32M);
+            Assert.True(outcome.ToString() == string.Empty);
+            Assert.True(outcome.ToMultiLine("<br>") == string.Empty);
         }
 
-        [TestMethod]
+        [Fact]
         public void Success_StatusCode_Is_NullByDefault()
         {
             var outcome = Outcomes.Success(23123.32M);
 
-            Assert.IsNull(outcome.StatusCode);
+            Assert.Null(outcome.StatusCode);
         }
 
-        [TestMethod]
+        [Fact]
         public void Success_StatusCode_WithStatusCode_Works()
         {
-            var outcome = Outcomes.Success(23123.32M).WithStatusCode((int) StatusCodes.New);
+            var outcome = Outcomes.Success(23123.32M)
+                                  .WithStatusCode((int) StatusCodes.New);
 
-            Assert.IsTrue(outcome.StatusCode == (int) StatusCodes.New);
+            Assert.True(outcome.StatusCode == (int) StatusCodes.New);
         }
 
-        [TestMethod]
+        [Fact]
         public void Success_Keys_WithKey_Works()
         {
             var outcome = Outcomes.Success(23123.32M)
                                   .WithKey("test1", "value1")
                                   .WithKey("test2", "value2");
 
-            Assert.IsTrue((string) outcome.Keys["test1"] == "value1");
-            Assert.IsTrue((string) outcome.Keys["test2"] == "value2");
+            Assert.True((string) outcome.Keys["test1"] == "value1");
+            Assert.True((string) outcome.Keys["test2"] == "value2");
         }
     }
 }

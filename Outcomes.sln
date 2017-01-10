@@ -3,18 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ether.Outcomes", "Outcomes\Ether.Outcomes.csproj", "{5E8758EB-ED8B-4F86-9176-4B10C50DA8BE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ether.Outcomes.Tests", "Outcomes.Tests\Ether.Outcomes.Tests.csproj", "{08B07FB9-E8D7-4F4E-B5A1-9E6D98738998}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{34E8307F-3A0B-4148-9CA4-88B999A9C8F0}"
 	ProjectSection(SolutionItems) = preProject
 		WebEssentials-Settings.json = WebEssentials-Settings.json
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ether.Outcomes.Composer", "Outcomes.Composer\Ether.Outcomes.Composer.csproj", "{FD7ADDA5-9C68-451E-9551-2F1B988A36C8}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Ether.Outcomes", "Outcomes\Ether.Outcomes.xproj", "{612B88CA-1FCE-49C4-9D33-5BA0DCA87BDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ether.Outcomes.Composer.Tests", "Outcomes.Composer.Tests\Ether.Outcomes.Composer.Tests.csproj", "{9EBD9B53-0608-481C-A94D-7D3D4BEC8F03}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Outcomes.Tests", "Outcomes.Tests\Outcomes.Tests.xproj", "{E9EDC3A8-7BDB-4684-8626-41D37D6A4CC3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,22 +18,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5E8758EB-ED8B-4F86-9176-4B10C50DA8BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5E8758EB-ED8B-4F86-9176-4B10C50DA8BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5E8758EB-ED8B-4F86-9176-4B10C50DA8BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5E8758EB-ED8B-4F86-9176-4B10C50DA8BE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{08B07FB9-E8D7-4F4E-B5A1-9E6D98738998}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{08B07FB9-E8D7-4F4E-B5A1-9E6D98738998}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{08B07FB9-E8D7-4F4E-B5A1-9E6D98738998}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{08B07FB9-E8D7-4F4E-B5A1-9E6D98738998}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FD7ADDA5-9C68-451E-9551-2F1B988A36C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FD7ADDA5-9C68-451E-9551-2F1B988A36C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FD7ADDA5-9C68-451E-9551-2F1B988A36C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FD7ADDA5-9C68-451E-9551-2F1B988A36C8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9EBD9B53-0608-481C-A94D-7D3D4BEC8F03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9EBD9B53-0608-481C-A94D-7D3D4BEC8F03}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9EBD9B53-0608-481C-A94D-7D3D4BEC8F03}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9EBD9B53-0608-481C-A94D-7D3D4BEC8F03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{612B88CA-1FCE-49C4-9D33-5BA0DCA87BDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{612B88CA-1FCE-49C4-9D33-5BA0DCA87BDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{612B88CA-1FCE-49C4-9D33-5BA0DCA87BDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{612B88CA-1FCE-49C4-9D33-5BA0DCA87BDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9EDC3A8-7BDB-4684-8626-41D37D6A4CC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9EDC3A8-7BDB-4684-8626-41D37D6A4CC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9EDC3A8-7BDB-4684-8626-41D37D6A4CC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9EDC3A8-7BDB-4684-8626-41D37D6A4CC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
