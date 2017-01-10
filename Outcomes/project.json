@@ -1,15 +1,27 @@
-﻿{
+{
+    "name":  "Ether.Outcomes", 
     "title": "Ether.Outcomes",
+    "description": "Outcome.NET uses generics and a fluent interface to add metadata to your return value. It's a very expressive, clean  result wrapper.",
     "copyright": "2017",
-    "version": "2.8.0-*",
+    "version": "2.8.0-alpha",
 
-  "dependencies": {
-    "NETStandard.Library": "1.6.0"
-  },
+    "packOptions": {
+        "summary": "Never write a result wrapper again! Outcome.NET is a simple, powerful helper for methods that need to return a value, but sometimes also need to provide metadata such as error messages.",
+        "releaseNotes": "*** TBD ***",
+        "projectUrl": "https://github.com/kinetiq/Ether.Outcomes",
+        "owners": [ "Brian MacKay", "Kinetiq" ],
+        "tags": [ "c#", ".net", "notification", "fluent", "response", "failure", "success" ],
+        "licenseUrl": "http://choosealicense.com/licenses/mit/",
+        "requireLicenseAcceptance": false
+    },
 
-  "frameworks": {
-    "netstandard1.6": {
-      "imports": "dnxcore50"
+    "dependencies": {
+        "NETStandard.Library": "1.6.0"
+    },
+
+    "frameworks": {
+        "netstandard1.6": {
+            "imports": "dnxcore50"
+        }
     }
-  }
 }
