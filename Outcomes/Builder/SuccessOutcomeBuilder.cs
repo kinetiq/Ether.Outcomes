@@ -8,6 +8,9 @@ namespace Ether.Outcomes.Builder
     /// <summary>
     /// Uses the builder pattern to create a fluent interface for success scenarios.
     /// </summary>
+#if NET45 || NET40
+    [Serializable]
+#endif
     public class SuccessOutcomeBuilder<TValue> : OutcomeResult<TValue>
     {
         internal SuccessOutcomeBuilder(bool success) : base(success)
