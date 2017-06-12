@@ -9,6 +9,11 @@ using JetBrains.Annotations;
 
 namespace Ether.Outcomes
 {
+    //Partial class contains all commons methods.
+    public static partial class Outcomes
+    {
+        public static string DefaultDelimiter { get; set; }
+    }
 
     //Partial class contains all the success-related methods.
     public static partial class Outcomes
