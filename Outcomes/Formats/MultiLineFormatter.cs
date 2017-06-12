@@ -10,6 +10,7 @@ namespace Ether.Outcomes.Formats
         /// </summary>
         public static string ToMultiLine(string delimiter, List<string> messages)
         {
+            delimiter = delimiter ?? Outcomes.DefaultDelimiter;
             var result = new StringBuilder();
 
             foreach (var message in messages)
