@@ -1,7 +1,6 @@
-﻿using System;
+﻿using JetBrains.Annotations;
+using System;
 using System.Collections.Generic;
-using System.Reflection;
-using JetBrains.Annotations;
 
 namespace Ether.Outcomes.Builder
 {
@@ -73,7 +72,7 @@ namespace Ether.Outcomes.Builder
         public SuccessOutcomeBuilder<TValue> WithValue(TValue value)
         {
             base.Value = value;
-            return this; 
+            return this;
         }
 
         /// <summary>
@@ -117,21 +116,21 @@ namespace Ether.Outcomes.Builder
         {
             WithMessage(outcome.Messages);
             WithKeysFrom(outcome);
-   
-#if NET45 || NET40
-                //If outcome has a Value, and if we can coerce it into TValue, 
-                //we should do so.       
 
-                if (outcome.GetType().IsGenericType) //only generics have Value 
-               {                
-                    //get the contents of value
-                    var value = outcome.GetType()
-                    .GetProperty("Value")
-                    .GetValue(outcome, null);
+#if NET45 || NET40
+            //If outcome has a Value, and if we can coerce it into TValue, 
+            //we should do so.       
+
+            if (outcome.GetType().IsGenericType) //only generics have Value 
+            {
+                //get the contents of value
+                var value = outcome.GetType()
+                .GetProperty("Value")
+                .GetValue(outcome, null);
 
                 if (value is TValue) //are these types compatibile? 
                     WithValue((TValue)value); //if so, caste and assign.
-                }
+            }
 #endif
 
 #if NETSTANDARD1_2

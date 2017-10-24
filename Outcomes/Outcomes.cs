@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using Ether.Outcomes.Builder;
-using JetBrains.Annotations;
+﻿using Ether.Outcomes.Builder;
 
 namespace Ether.Outcomes
 {
