@@ -7,7 +7,7 @@
     <VersionPrefix>2.8.2-alpha</VersionPrefix>
     <TargetFrameworks>net40;net45;netstandard1.3</TargetFrameworks>
     <AssemblyName>Ether.Outcomes</AssemblyName>
-    <PackageId>Outcomes</PackageId>
+    <PackageId>Ether.Outcomes</PackageId>
     <PackageTags>c#;.net;notification;fluent;response;failure;success</PackageTags>
     <PackageReleaseNotes>Removed our copy of the jetbrains attributes and took a dependency on the package. Having the attributes here caused problems when consumed by projects that want to reference JetBrains.Annotations</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/kinetiq/Ether.Outcomes</PackageProjectUrl>
@@ -19,6 +19,7 @@
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <Version>2.9-alpha</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Brian MacKay</Authors>
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net40' ">
