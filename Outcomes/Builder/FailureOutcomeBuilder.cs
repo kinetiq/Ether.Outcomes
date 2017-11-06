@@ -21,7 +21,7 @@ namespace Ether.Outcomes.Builder
         /// <param name="exception">Exception used to generate the message.</param>
         public IFailureOutcomeBuilder<TValue> FromException(Exception exception)
         {
-            base.Messages.Add("Exception: " + exception.Message);
+            base.Messages.Add("Exception: " + exception);
             return this; 
         }
 

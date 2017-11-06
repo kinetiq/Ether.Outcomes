@@ -17,7 +17,7 @@
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <Version>2.9-alpha</Version>
+    <Version>2.9.1-alpha</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Brian MacKay</Authors>
   </PropertyGroup>
