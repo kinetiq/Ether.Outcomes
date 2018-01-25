@@ -48,7 +48,7 @@ namespace Ether.Outcomes
 #if NET45 || NET40
     [Serializable]
 #endif
-    public class DeserializableOutcome<TValue> : DeserializableOutcome
+    public class DeserializableOutcome<TValue> : DeserializableOutcome, IOutcome, IOutcome<TValue>
     {
         public TValue Value { get; set; }
     }
