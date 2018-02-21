@@ -40,13 +40,19 @@ namespace Ether.Outcomes.Builder
         /// </summary>
         /// <param name="message">Optional message that will appear after the specified outcome's messages.</param>
         /// <param name="paramList">Shorthand for String.Format</param>
-        public new IFailureOutcomeBuilder<TValue> WithMessage(string message, params object[] paramList)
+        public new IFailureOutcomeBuilder<TValue> WithMessageFormat(string message, params object[] paramList)
         {
-            base.WithMessage(message, paramList);
+            base.WithMessageFormat(message, paramList);
             return this; 
         }
 
-        /// <summary>
+	    public new IFailureOutcomeBuilder<TValue> WithMessage(string message)
+	    {
+		    base.WithMessage(message);
+		    return this;
+	    }
+
+	    /// <summary>
         /// Adds a collection of messages to the end of the outcome's message list.
         /// </summary>
         public new IFailureOutcomeBuilder<TValue> WithMessage(IEnumerable<string> messages)
