@@ -17,13 +17,13 @@ namespace Ether.Outcomes.Builder
         }
 
         /// <summary>
-        /// Add a string to the end of the outcome's message collection.
+        /// Add a formatted string to the end of the outcome's message collection.
         /// </summary>
-        /// <param name="message">String to add.</param>
+        /// <param name="message">String with format pattern to add. The format patterns will be used in string.Format.</param>
         /// <param name="paramList">Shorthand for String.Format</param>
         /// <returns></returns>
         [StringFormatMethod("message")]
-        public SuccessOutcomeBuilder<TValue> WithMessage(string message, params object[] paramList)
+        public SuccessOutcomeBuilder<TValue> WithMessageFormat(string message, params object[] paramList)
         {
             message = string.Format(message, paramList);
 
@@ -31,6 +31,16 @@ namespace Ether.Outcomes.Builder
             return this;
         }
 
+		/// <summary>
+		/// Add a string to the end of the outcome's message collection.
+		/// </summary>
+		/// <param name="message">String to add.</param>
+		/// <returns></returns>
+		public SuccessOutcomeBuilder<TValue> WithMessage(string message)
+	    {
+			base.Messages.Add(message);
+		    return this;
+	    }
         /// <summary>
         /// Append a list of strings to the end of the outcome's message collection.
         /// </summary>

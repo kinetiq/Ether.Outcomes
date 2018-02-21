@@ -23,17 +23,23 @@ namespace Ether.Outcomes.Builder
         /// <summary>
         /// Add a string to the end of the outcome's message collection.
         /// </summary>
-        /// <param name="message">String to add.</param>
+        /// <param name="message">String to add. It can contains string format pattern which will be used by string.Format.</param>
         /// <param name="paramList">Shorthand for String.Format</param>
         /// <returns></returns>
-        IFailureOutcomeBuilder<TValue> WithMessage(string message, params object[] paramList);
+        IFailureOutcomeBuilder<TValue> WithMessageFormat(string message, params object[] paramList);
 
+		/// <summary>
+		/// Add a string to the end of the outcome's message collection.
+		/// </summary>
+		/// <param name="message">String to add.</param>
+		/// <returns></returns>
+		IFailureOutcomeBuilder<TValue> WithMessage(string message);
         /// <summary>
-        /// Append a list of strings to the end of the outcome's message collection.
-        /// </summary>
-        /// <param name="messages">The strings to add.</param>
-        /// <returns></returns>
-        IFailureOutcomeBuilder<TValue> WithMessage(IEnumerable<string> messages);
+		/// Append a list of strings to the end of the outcome's message collection.
+		/// </summary>
+		/// <param name="messages">The strings to add.</param>
+		/// <returns></returns>
+		IFailureOutcomeBuilder<TValue> WithMessage(IEnumerable<string> messages);
 
         /// <summary>
         /// Alternate syntax for FromOutcome. Adds messages from the specified outcome (if any).
