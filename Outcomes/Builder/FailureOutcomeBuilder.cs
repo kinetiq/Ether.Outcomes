@@ -16,12 +16,12 @@ namespace Ether.Outcomes.Builder
         }
 
         /// <summary>
-        /// Adds messages from the specified exception. Internally, Outcome.Net calls exception.Message to generate the messages.
+        /// Adds messages from the specified exception. Internally, Outcome.Net calls exception.ToString() to generate the messages.
         /// </summary>
         /// <param name="exception">Exception used to generate the message.</param>
         public IFailureOutcomeBuilder<TValue> FromException(Exception exception)
         {
-            base.Messages.Add("Exception: " + exception);
+            base.Messages.Add(exception.ToString());
             return this; 
         }
 

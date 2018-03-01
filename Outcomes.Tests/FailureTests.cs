@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Xunit;
 
 
@@ -90,7 +91,7 @@ namespace Ether.Outcomes.Tests
 
             Assert.False(outcome.Success);
             Assert.True(outcome.Messages.Count == 1);
-            Assert.True(outcome.ToMultiLine("<br>") == "Exception: test message<br>");
+            Assert.True(outcome.ToMultiLine("<br>") == "System.InvalidOperationException: test message<br>");
         }
 
 
@@ -104,7 +105,7 @@ namespace Ether.Outcomes.Tests
                                             .WithMessage("suffix");
             Assert.False(outcome.Success);
             Assert.True(outcome.Messages.Count == 3);
-            Assert.True(outcome.ToMultiLine("<br>") == "prefix<br>Exception: test<br>suffix<br>");
+            Assert.True(outcome.ToMultiLine("<br>") == "prefix<br>System.InvalidOperationException: test<br>suffix<br>");
         }
 
         [Fact]

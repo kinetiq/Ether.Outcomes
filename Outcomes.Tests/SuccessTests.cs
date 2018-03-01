@@ -38,9 +38,12 @@ namespace Ether.Outcomes.Tests
         public void Success_Basic_Chaining_Works()
         {
             var messages = new List<string> {"test2", "test3"};
+
+            var x = Outcomes.Failure();
+
             var outcome = Outcomes.Success<int>().WithValue(32)
-                                                 .WithStatusCode(401)
-                                                 .WithMessage("test1")
+                                                 .WithStatusCode(401)            
+                                                 .WithMessage("test1")                                                 
                                                  .WithMessage(messages);
 
             Assert.True(outcome.Success);
@@ -76,7 +79,7 @@ namespace Ether.Outcomes.Tests
 
             //In this case, some casting is going to happen.
             var outcome3 = Outcomes.Success<ExampleConcrete>()
-                                   .WithValue(new ExampleConcrete() { SomeInt = 0, SomeString = "not important"});
+                                   .WithValue(new ExampleConcrete() { SomeInt = 0, SomeString = "not important" });
 
             //In this case, there's a null value.
             var outcome4 = Outcomes.Success<ExampleConcrete>()
@@ -86,7 +89,6 @@ namespace Ether.Outcomes.Tests
             //without a value.
             var outcome5 = Outcomes.Success<string>()
                                    .WithValue("test");
-
 
             var from1 = Outcomes.Success().FromOutcome(outcome1);
             var from2 = Outcomes.Success().FromOutcome(outcome2);

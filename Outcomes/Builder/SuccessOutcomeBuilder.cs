@@ -1,6 +1,8 @@
 ﻿using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 
 namespace Ether.Outcomes.Builder
 {
@@ -143,20 +145,22 @@ namespace Ether.Outcomes.Builder
             }
 #endif
 
-#if NETSTANDARD1_2
-                //If outcome has a Value, and if we can coerce it into TValue, 
-                //we should do so.       
-                if (outcome.GetType().GetTypeInfo().IsGenericType) //only generics have Value 
-                {                
+#if NETSTANDARD1_3
+            //If outcome has a Value, and if we can coerce it into TValue, 
+            //we should do so.     
+            var type = outcome.GetType();
+            var info = type.GetTypeInfo();
+
+            if (info.IsGenericType) //only generics have Value 
+            {
                     //get the contents of value
-                    var value = outcome.GetType().GetTypeInfo()
-                    .GetProperty("Value")
+                var value = type
+                    .GetRuntimeProperty("Value")
                     .GetValue(outcome, null);
 
                 if (value is TValue) //are these types compatibile? 
                     WithValue((TValue)value); //if so, caste and assign.
                 }
-
 #endif
 
             return this;

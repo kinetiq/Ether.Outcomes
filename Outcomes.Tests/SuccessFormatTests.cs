@@ -5,10 +5,10 @@ namespace Ether.Outcomes.Tests
     public class SuccessFormatTests
     {
         [Fact]
-        public void Success_WithMessage_Supports_Format()
+        public void Success_WithMessageFormat()
         {
             IOutcome outcome = Outcomes.Success()
-                                       .WithMessage("Bob {0} at {1}", "wins", "life");
+                                       .WithMessageFormat("Bob {0} at {1}", "wins", "life");
 
             Assert.True(outcome.Success);
             Assert.True(outcome.ToString() == "Bob wins at life");
