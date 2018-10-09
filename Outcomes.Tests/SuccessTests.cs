@@ -72,14 +72,18 @@ namespace Ether.Outcomes.Tests
         public void Success_FromOutcome_Persists_Values()
         {
             var outcome1 = Outcomes.Success<int>()
-                                   .WithValue(10);
+                .WithValue(10)
+                .WithStatusCode(505);
 
+            
             var outcome2 = Outcomes.Success()
-                                   .WithValue(20);
+                .WithValue(20)
+                .WithStatusCode(null);
 
             //In this case, some casting is going to happen.
             var outcome3 = Outcomes.Success<ExampleConcrete>()
                                    .WithValue(new ExampleConcrete() { SomeInt = 0, SomeString = "not important" });
+          
 
             //In this case, there's a null value.
             var outcome4 = Outcomes.Success<ExampleConcrete>()
@@ -97,8 +101,11 @@ namespace Ether.Outcomes.Tests
             var from5 = Outcomes.Success<ExampleBase>().FromOutcome(outcome5);
 
             Assert.True(from1.Value.Equals(10));
+            Assert.True(from1.StatusCode == 505);
             Assert.True(from2.Value.Equals(20));
+            Assert.True(from2.StatusCode == null);
             Assert.True(from3.Value.SomeString == "not important");
+            Assert.True(from3.StatusCode == null); // not set, should be null
             Assert.True(from4.Value == null);
             Assert.True(from5.Value == null);
         }

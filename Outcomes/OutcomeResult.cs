@@ -21,7 +21,36 @@ namespace Ether.Outcomes
         public bool Success { get; protected set; }
         public List<string> Messages { get; protected set; }
         public TValue Value { get; set; }
-        public int? StatusCode { get; protected set; }
+
+        /// <summary>
+        /// Syntactic sugar for Keys.ContainsKey["StatusCode"]. Guarantees that StatusCode will be a nullable
+        /// int. If it is not, because Keys["StatusCode"] was set manually to something strange, it will return null.
+        /// </summary>
+        [Obsolete("Considering removing this in favor of the Keys dictionary, pending community feedback.")]
+        public int? StatusCode
+        {
+            get
+            {
+                // Since the backing field is in a Dictionary<object>, we have to careful coerce 
+                // it into a nullable int.
+                if (!Keys.ContainsKey("StatusCode"))
+                    return null;
+
+                var statusCode = Keys["StatusCode"];
+
+                if (statusCode == null)
+                    return null;
+
+                var statusCodeString = statusCode.ToString();
+
+                if (int.TryParse(statusCodeString, out var value))
+                    return value;
+                else
+                    return null;
+            }
+            protected set => Keys["StatusCode"] = value;
+        }
+
         public Dictionary<string, object> Keys { get; }
         public bool Failure => !Success;
 
@@ -30,7 +59,6 @@ namespace Ether.Outcomes
             Success = success;
             Messages = new List<string>();
             Value = default(TValue);
-            StatusCode = null;
             Keys = new Dictionary<string, object>();
         }
 

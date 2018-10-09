@@ -46,7 +46,7 @@ namespace Ether.Outcomes.Builder
         /// <summary>
         /// Append a list of strings to the end of the outcome's message collection.
         /// </summary>
-        /// <param name="messages">Enum of srings to add.</param>
+        /// <param name="messages">Enum of strings to add.</param>
         /// <returns></returns>
         public SuccessOutcomeBuilder<TValue> WithMessage(IEnumerable<string> messages)
         {
@@ -91,7 +91,7 @@ namespace Ether.Outcomes.Builder
         /// (optional) Sets the StatusCode, which is an additional piece of metadata you can use for your own purposes. 
         /// This is handy when there could be, for instance, multiple failure modes. 
         /// </summary>
-        [Obsolete("This will eventually be replaced by the new Keys dictionary.")]
+        [Obsolete("Considering removing this in favor of the Keys dictionary, pending community feedback.")]
         public SuccessOutcomeBuilder<TValue> WithStatusCode(int? statusCode)
         {
             base.StatusCode = statusCode;

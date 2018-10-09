@@ -80,7 +80,7 @@ namespace Ether.Outcomes.Builder
             return this;
         }
 
-        [Obsolete("This will eventually be replaced by the new Keys dictionary.")]
+        [Obsolete("Considering removing this in favor of the Keys dictionary, pending community feedback.")]
         public new IFailureOutcomeBuilder<TValue> WithStatusCode(int? statusCode)
         {
             base.WithStatusCode(statusCode);
