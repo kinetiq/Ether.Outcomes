@@ -50,6 +50,21 @@ namespace Ether.Outcomes.Tests
             Assert.True(outcome.ToMultiLine("<br>") == "test1<br>test2<br>test3<br>");
         }
 
+        [Fact]
+        public void Failure_Messages_Prepend_Works()
+        {
+            IOutcome outcome = Outcomes.Success()
+                .WithMessage("Test!");
+
+            var newOutcome = Outcomes.Failure()
+                .FromOutcome(outcome)
+                .PrependMessage("This should be first since it's prepended!");
+
+            Assert.True(newOutcome.Failure);
+            Assert.True(newOutcome.Messages.Count == 2);
+            Assert.True(newOutcome.Messages[0] == "This should be first since it's prepended!");
+            Assert.True(newOutcome.Messages[1] == "Test!");
+        }
 
         [Fact]
         public void Failure_Chaining_With_Syntactic_Sugar_Works()

@@ -35,6 +35,12 @@ namespace Ether.Outcomes.Builder
             return this;
         }
 
+        public new IFailureOutcomeBuilder<TValue> PrependMessage(string message)
+        {
+            base.PrependMessage(message);
+            return this;
+        }
+
         /// <summary>
         /// Adds a message to the end of the message list.
         /// </summary>

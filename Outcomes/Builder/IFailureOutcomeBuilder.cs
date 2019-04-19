@@ -21,6 +21,15 @@ namespace Ether.Outcomes.Builder
         IFailureOutcomeBuilder<TValue> FromOutcome(IOutcome outcome);
 
         /// <summary>
+        /// Add a string to the beginning of the outcome's message collection. Useful for adding
+        /// context to an existing Outcome before passing it back up the stack.
+        /// </summary>
+        /// <param name="message">String to add.</param>
+        /// <returns></returns>
+        IFailureOutcomeBuilder<TValue> PrependMessage(string message);
+
+
+        /// <summary>
         /// Add a string to the end of the outcome's message collection.
         /// </summary>
         /// <param name="message">String to add. It can contains string format pattern which will be used by string.Format.</param>

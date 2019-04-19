@@ -19,6 +19,18 @@ namespace Ether.Outcomes.Builder
         }
 
         /// <summary>
+        /// Add a string to the beginning of the outcome's message collection. Useful for adding
+        /// context to an existing Outcome before passing it back up the stack.
+        /// </summary>
+        /// <param name="message">String to add.</param>
+        /// <returns></returns>
+        public SuccessOutcomeBuilder<TValue> PrependMessage(string message)
+        {
+            base.Messages.Insert(0, message);
+            return this;
+        }
+
+        /// <summary>
         /// Add a formatted string to the end of the outcome's message collection.
         /// </summary>
         /// <param name="message">String with format pattern to add. The format patterns will be used in string.Format.</param>
@@ -43,6 +55,7 @@ namespace Ether.Outcomes.Builder
 			base.Messages.Add(message);
 		    return this;
 	    }
+
         /// <summary>
         /// Append a list of strings to the end of the outcome's message collection.
         /// </summary>

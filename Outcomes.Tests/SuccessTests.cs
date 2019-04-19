@@ -18,6 +18,33 @@ namespace Ether.Outcomes.Tests
             Assert.True(outcome.ToString() == string.Empty);
         }
 
+        [Fact]
+        public void Success_Messages_Prepend_With_Empty_Message_Collection()
+        {
+            IOutcome outcome = Outcomes.Success()
+                .PrependMessage("This should not throw an error.");
+
+            Assert.True(outcome.Success);
+            Assert.True(outcome.Messages.Count == 1);
+            Assert.True(outcome.Messages[0] == "This should not throw an error.");
+        }
+
+        [Fact]
+        public void Success_Messages_Prepend_Works()
+        {
+            IOutcome outcome = Outcomes.Success()
+                .WithMessage("Test!");
+
+            var newOutcome = Outcomes.Success()
+                .FromOutcome(outcome)
+                .PrependMessage("This should be first since it's prepended!");
+
+            Assert.True(newOutcome.Success);
+            Assert.True(newOutcome.Messages.Count == 2);
+            Assert.True(newOutcome.Messages[0] == "This should be first since it's prepended!");
+            Assert.True(newOutcome.Messages[1] == "Test!");
+        }
+
         public IOutcome<int> Method()
         {
             return Outcomes.Success<int>();
@@ -38,8 +65,6 @@ namespace Ether.Outcomes.Tests
         public void Success_Basic_Chaining_Works()
         {
             var messages = new List<string> {"test2", "test3"};
-
-            var x = Outcomes.Failure();
 
             var outcome = Outcomes.Success<int>().WithValue(32)
                                                  .WithStatusCode(401)            
@@ -74,7 +99,6 @@ namespace Ether.Outcomes.Tests
             var outcome1 = Outcomes.Success<int>()
                 .WithValue(10)
                 .WithStatusCode(505);
-
             
             var outcome2 = Outcomes.Success()
                 .WithValue(20)
