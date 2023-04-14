@@ -45,11 +45,6 @@ namespace Ether.Outcomes.Tests
             Assert.True(newOutcome.Messages[1] == "Test!");
         }
 
-        public IOutcome<int> Method()
-        {
-            return Outcomes.Success<int>();
-        }
-
         [Fact]
         public void Success_Messages_OfT_Not_Null_By_Default()
         {
