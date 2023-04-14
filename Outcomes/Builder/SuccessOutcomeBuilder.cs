@@ -1,10 +1,8 @@
-﻿using JetBrains.Annotations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Reflection;
+using JetBrains.Annotations;
 
-namespace Ether.Outcomes.Builder
+namespace Outcomes.Builder
 {
     /// <summary>
     /// Uses the builder pattern to create a fluent interface for success scenarios.
@@ -140,8 +138,8 @@ namespace Ether.Outcomes.Builder
                     .GetRuntimeProperty("Value")
                     .GetValue(outcome, null);
 
-                if (value is TValue) //are these types compatible? 
-                    WithValue((TValue)value); //if so, caste and assign.
+                if (value is TValue matchedValue) //are these types compatible? 
+                    WithValue(matchedValue); //if so, caste and assign.
             }
             
             return this;
