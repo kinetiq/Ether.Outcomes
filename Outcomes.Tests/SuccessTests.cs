@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Ether.Outcomes.Tests.Helpers;
-
 using Xunit;
 
 namespace Ether.Outcomes.Tests

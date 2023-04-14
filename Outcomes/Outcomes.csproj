@@ -9,7 +9,7 @@
     <AssemblyName>Ether.Outcomes</AssemblyName>
     <PackageId>Ether.Outcomes</PackageId>
     <PackageTags>c#;.net;notification;fluent;response;failure;success</PackageTags>
-    <PackageReleaseNotes>Removed StatusCode, which was not widely used, to simplify the API. Dropped support for old, out-of-support .NET Framework versions in favor of NetStandard. Simplified namespaces by removing Ether from everything.</PackageReleaseNotes>
+    <PackageReleaseNotes>Removed StatusCode, which was not widely used, to simplify the API. Dropped support for old, out-of-support .NET Framework versions in favor of NetStandard.</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/kinetiq/Ether.Outcomes</PackageProjectUrl>
     <PackageLicenseUrl>http://choosealicense.com/licenses/mit/</PackageLicenseUrl>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>

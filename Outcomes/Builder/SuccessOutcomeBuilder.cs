@@ -2,7 +2,7 @@
 using System.Reflection;
 using JetBrains.Annotations;
 
-namespace Outcomes.Builder
+namespace Ether.Outcomes.Builder
 {
     /// <summary>
     /// Uses the builder pattern to create a fluent interface for success scenarios.
