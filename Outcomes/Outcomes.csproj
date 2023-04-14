@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <Description>Outcome.NET uses generics and a fluent interface to add metadata to your return value. It's a very expressive, clean  result wrapper.</Description>
@@ -9,7 +9,7 @@
     <AssemblyName>Ether.Outcomes</AssemblyName>
     <PackageId>Ether.Outcomes</PackageId>
     <PackageTags>c#;.net;notification;fluent;response;failure;success</PackageTags>
-    <PackageReleaseNotes>Fixed an issue where StatusCode was not included in FromOutcome. Changed this so that StatusCode is now backed by the Keys dictionary. Since StatusCode is a property, it should still be serialized the same way, so this is not a breaking  change for the edge case where an Outcome is serialized to Json and StatusCode is expected.</PackageReleaseNotes>
+    <PackageReleaseNotes>Removed StatusCode, which was not widely used, to simplify the API. Dropped support for old, out-of-support .NET Framework versions in favor of NetStandard. Simplified namespaces by removing Ether from everything.</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/kinetiq/Ether.Outcomes</PackageProjectUrl>
     <PackageLicenseUrl>http://choosealicense.com/licenses/mit/</PackageLicenseUrl>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
