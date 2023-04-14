@@ -66,14 +66,14 @@ namespace Ether.Outcomes.Tests
         {
             var messages = new List<string> {"test2", "test3"};
 
-            var outcome = Outcomes.Success<int>().WithValue(32)
-                                                 .WithStatusCode(401)            
-                                                 .WithMessage("test1")                                                 
-                                                 .WithMessage(messages);
+            var outcome = Outcomes.Success<int>()
+                .WithValue(32)
+                .WithMessage("test1")
+                .WithMessage(messages);
 
             Assert.True(outcome.Success);
             Assert.True(outcome.Value == 32);
-            Assert.True(outcome.StatusCode == 401);
+
             Assert.True(outcome.Messages.Count == 3);
             Assert.True(outcome.ToString() == "test1test2test3");
             Assert.True(outcome.ToMultiLine("<br>") == "test1<br>test2<br>test3<br>");
@@ -98,11 +98,11 @@ namespace Ether.Outcomes.Tests
         {
             var outcome1 = Outcomes.Success<int>()
                 .WithValue(10)
-                .WithStatusCode(505);
+                .WithKey("StatusCode", 505);
             
             var outcome2 = Outcomes.Success()
                 .WithValue(20)
-                .WithStatusCode(null);
+                .WithKey("StatusCode", null);
 
             //In this case, some casting is going to happen.
             var outcome3 = Outcomes.Success<ExampleConcrete>()
@@ -125,11 +125,11 @@ namespace Ether.Outcomes.Tests
             var from5 = Outcomes.Success<ExampleBase>().FromOutcome(outcome5);
 
             Assert.True(from1.Value.Equals(10));
-            Assert.True(from1.StatusCode == 505);
+            Assert.True((int) from1.Keys["StatusCode"] == 505);
             Assert.True(from2.Value.Equals(20));
-            Assert.True(from2.StatusCode == null);
+            Assert.True(from2.Keys["StatusCode"] == null);
             Assert.True(from3.Value.SomeString == "not important");
-            Assert.True(from3.StatusCode == null); // not set, should be null
+            Assert.True(from3.Keys.ContainsKey("StatusCode") == false); // not set
             Assert.True(from4.Value == null);
             Assert.True(from5.Value == null);
         }
@@ -169,23 +169,6 @@ namespace Ether.Outcomes.Tests
             Assert.True(outcome.Value == 23123.32M);
             Assert.True(outcome.ToString() == string.Empty);
             Assert.True(outcome.ToMultiLine("<br>") == string.Empty);
-        }
-
-        [Fact]
-        public void Success_StatusCode_Is_NullByDefault()
-        {
-            var outcome = Outcomes.Success(23123.32M);
-
-            Assert.Null(outcome.StatusCode);
-        }
-
-        [Fact]
-        public void Success_StatusCode_WithStatusCode_Works()
-        {
-            var outcome = Outcomes.Success(23123.32M)
-                                  .WithStatusCode((int) StatusCodes.New);
-
-            Assert.True(outcome.StatusCode == (int) StatusCodes.New);
         }
 
         [Fact]

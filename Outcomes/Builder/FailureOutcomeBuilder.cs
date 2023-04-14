@@ -6,9 +6,7 @@ namespace Ether.Outcomes.Builder
     /// <summary>
     /// Uses the builder pattern to create a fluent interface for failure scenarios.
     /// </summary>
-#if NET45 || NET40
-    [Serializable]
-#endif
+
     public class FailureOutcomeBuilder<TValue> : SuccessOutcomeBuilder<TValue>, IFailureOutcomeBuilder<TValue>
     {
         internal FailureOutcomeBuilder(bool success) : base(success)
@@ -83,13 +81,6 @@ namespace Ether.Outcomes.Builder
         public new IFailureOutcomeBuilder<TValue> WithMessagesFrom(IEnumerable<string> messages)
         {
             base.WithMessage(messages);
-            return this;
-        }
-
-        [Obsolete("Considering removing this in favor of the Keys dictionary, pending community feedback.")]
-        public new IFailureOutcomeBuilder<TValue> WithStatusCode(int? statusCode)
-        {
-            base.WithStatusCode(statusCode);
             return this;
         }
 

@@ -58,7 +58,7 @@ namespace Ether.Outcomes
         {
             Success = success;
             Messages = new List<string>();
-            Value = default(TValue);
+            Value = default;
             Keys = new Dictionary<string, object>();
         }
 
@@ -71,7 +71,6 @@ namespace Ether.Outcomes
             Success = outcome.Success;
             Messages = outcome.Messages;
             Value = outcome.Value;
-            StatusCode = outcome.StatusCode;
             Keys = outcome.Keys;
         }
 
@@ -83,8 +82,7 @@ namespace Ether.Outcomes
         {
             Success = outcome.Success;
             Messages = outcome.Messages;
-            Value = default(TValue);
-            StatusCode = outcome.StatusCode;
+            Value = default;
             Keys = outcome.Keys;
         }
 

@@ -9,9 +9,6 @@ namespace Ether.Outcomes.Builder
     /// <summary>
     /// Uses the builder pattern to create a fluent interface for success scenarios.
     /// </summary>
-#if NET45 || NET40
-    [Serializable]
-#endif
     public class SuccessOutcomeBuilder<TValue> : OutcomeResult<TValue>
     {
         internal SuccessOutcomeBuilder(bool success) : base(success)
@@ -101,17 +98,6 @@ namespace Ether.Outcomes.Builder
         }
 
         /// <summary>
-        /// (optional) Sets the StatusCode, which is an additional piece of metadata you can use for your own purposes. 
-        /// This is handy when there could be, for instance, multiple failure modes. 
-        /// </summary>
-        [Obsolete("Considering removing this in favor of the Keys dictionary, pending community feedback.")]
-        public SuccessOutcomeBuilder<TValue> WithStatusCode(int? statusCode)
-        {
-            base.StatusCode = statusCode;
-            return this;
-        }
-
-        /// <summary>
         /// Adds keys from the specified outcome, if any.
         /// </summary>
         /// <param name="outcome">Source outcome that messages are pulled from.</param>
@@ -142,23 +128,6 @@ namespace Ether.Outcomes.Builder
             WithMessage(outcome.Messages);
             WithKeysFrom(outcome);
 
-#if NET45 || NET40
-            //If outcome has a Value, and if we can coerce it into TValue, 
-            //we should do so.       
-
-            if (outcome.GetType().IsGenericType) //only generics have Value 
-            {
-                //get the contents of value
-                var value = outcome.GetType()
-                .GetProperty("Value")
-                .GetValue(outcome, null);
-
-                if (value is TValue) //are these types compatibile? 
-                    WithValue((TValue)value); //if so, caste and assign.
-            }
-#endif
-
-#if NETSTANDARD1_3
             //If outcome has a Value, and if we can coerce it into TValue, 
             //we should do so.     
             var type = outcome.GetType();
@@ -171,11 +140,10 @@ namespace Ether.Outcomes.Builder
                     .GetRuntimeProperty("Value")
                     .GetValue(outcome, null);
 
-                if (value is TValue) //are these types compatibile? 
+                if (value is TValue) //are these types compatible? 
                     WithValue((TValue)value); //if so, caste and assign.
-                }
-#endif
-
+            }
+            
             return this;
         }
     }

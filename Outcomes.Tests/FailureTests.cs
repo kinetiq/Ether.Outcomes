@@ -142,10 +142,10 @@ namespace Ether.Outcomes.Tests
         {
             var previousOutcome = Outcomes.Failure().WithMessage("test");
 
-            var outcome = Outcomes.Failure().WithStatusCode(201)
-                                            .WithMessage("prefix")
-                                            .WithMessagesFrom(previousOutcome)
-                                            .WithMessage("suffix");
+            var outcome = Outcomes.Failure()
+                .WithMessage("prefix")
+                .WithMessagesFrom(previousOutcome)
+                .WithMessage("suffix");
             
 
             Assert.False(outcome.Success);
@@ -160,15 +160,6 @@ namespace Ether.Outcomes.Tests
             var outcome = Outcomes.Failure();
 
             Assert.Null(outcome.StatusCode);
-        }
-
-        [Fact]
-        public void Failure_StatusCode_WithStatusCode_Works()
-        {
-            var outcome = Outcomes.Failure()
-                                  .WithStatusCode(200);
-
-            Assert.True(outcome.StatusCode == 200);
         }
 
         [Fact]

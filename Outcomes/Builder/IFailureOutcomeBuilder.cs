@@ -61,8 +61,6 @@ namespace Ether.Outcomes.Builder
         /// </summary>
         IFailureOutcomeBuilder<TValue> WithMessagesFrom(IEnumerable<string> messages);
 
-        IFailureOutcomeBuilder<TValue> WithStatusCode(int? statusCode);
-
         /// <summary>
         /// Sets the value for a failure outcome. The outcome object is just a wrapper for the value.
         /// </summary>
