@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>Outcome.NET uses generics and a fluent interface to add metadata to your return value. It's a very expressive, clean result wrapper.</Description>
+    <Description>Outcomes.NET provides a fluent, strongly typed result pattern that wraps return values with expressive metadata, enabling cleaner, more intentional method outcomes.</Description>
     <Copyright>2018</Copyright>
     <AssemblyTitle>Ether.Outcomes</AssemblyTitle>
     <VersionPrefix>3.1.0</VersionPrefix>
