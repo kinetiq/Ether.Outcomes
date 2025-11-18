@@ -1,27 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>Outcome.NET uses generics and a fluent interface to add metadata to your return value. It's a very expressive, clean  result wrapper.</Description>
+    <Description>Outcome.NET uses generics and a fluent interface to add metadata to your return value. It's a very expressive, clean result wrapper.</Description>
     <Copyright>2018</Copyright>
     <AssemblyTitle>Ether.Outcomes</AssemblyTitle>
-    <VersionPrefix>3.0.0-alpha</VersionPrefix>
-    <TargetFrameworks>netstandard1.3</TargetFrameworks>
+    <VersionPrefix>3.1.0</VersionPrefix>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <AssemblyName>Ether.Outcomes</AssemblyName>
     <PackageId>Ether.Outcomes</PackageId>
     <PackageTags>c#;.net;notification;fluent;response;failure;success</PackageTags>
-    <PackageReleaseNotes>Removed StatusCode, which was not widely used, to simplify the API. Dropped support for old, out-of-support .NET Framework versions in favor of NetStandard.</PackageReleaseNotes>
+    <PackageReleaseNotes>Removed StatusCode, which was not widely used, to simplify the API. Dropped support for old, out-of-support .NET Framework versions in favor of NetStandard 2. Updated packages.</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/kinetiq/Ether.Outcomes</PackageProjectUrl>
-    <PackageLicenseUrl>http://choosealicense.com/licenses/mit/</PackageLicenseUrl>
-    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <Version>3.0.0-alpha</Version>
+    <Version>3.1.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Brian MacKay</Authors>
   </PropertyGroup>
-
-	<ItemGroup>
-    <PackageReference Include="JetBrains.Annotations" Version="2022.3.1" />
+  <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" Version="2025.2.2" />
   </ItemGroup>
 
 </Project>
