@@ -19,3 +19,10 @@ First, <a href="http://docs.nuget.org/docs/start-here/installing-nuget">install 
 >PM> Install-Package Ether.Outcomes
 
 Outcome.NET is Copyright © 2014 Brian MacKay, <a href="getkinetiq.com">Kinetiq</a>, and other contributors under the MIT license.
+
+Support This Project
+==============
+
+If you find Outcome.NET useful, consider buying me a coffee!
+
+<a href="https://buymeacoffee.com/kinetiq" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
